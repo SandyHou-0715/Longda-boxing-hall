@@ -1,0 +1,74 @@
+<view class="container">
+  <!-- 顶部头部区域 -->
+  <view class="header">
+    <view class="logo-circle">
+      <text class="logo-text">🥋</text>
+    </view>
+    <text class="app-title">龙达跆拳道馆</text>
+    <text class="app-subtitle">会员管理系统</text>
+  </view>
+
+  <!-- 登录表单 -->
+  <view class="form-card">
+    <view class="form-title">会员登录</view>
+
+    <view class="input-group">
+      <text class="input-label">手机号码</text>
+      <view class="input-wrapper">
+        <text class="input-icon">📱</text>
+        <input
+          class="input-field"
+          type="number"
+          placeholder="请输入手机号"
+          placeholder-class="placeholder"
+          value="{{phone}}"
+          bindinput="onPhoneInput"
+          maxlength="11"
+        />
+      </view>
+    </view>
+
+    <view class="input-group">
+      <text class="input-label">登录密码</text>
+      <view class="input-wrapper">
+        <text class="input-icon">🔒</text>
+        <input
+          class="input-field"
+          password
+          placeholder="请输入密码"
+          placeholder-class="placeholder"
+          value="{{password}}"
+          bindinput="onPasswordInput"
+        />
+      </view>
+    </view>
+
+    <button class="login-btn btn-primary" bindtap="onLogin" loading="{{loading}}">
+      登 录
+    </button>
+  </view>
+
+  <!-- 演示账号提示 -->
+  <view class="demo-hint">
+    <view class="hint-header">
+      <text class="hint-icon">💡</text>
+      <text class="hint-title">演示账号</text>
+    </view>
+    <view class="hint-row">
+      <text class="hint-label">手机号：</text>
+      <text class="hint-value">13800138001 ~ 13800138005</text>
+    </view>
+    <view class="hint-row">
+      <text class="hint-label">密　码：</text>
+      <text class="hint-value">123456</text>
+    </view>
+    <view class="hint-accounts">
+      <text class="hint-sub">（张三 / 李四 / 王五 / 赵六 / 陈七）</text>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer">
+    <text class="footer-text">龙达跆拳道馆 · 专业训练 · 快乐成长</text>
+  </view>
+</view>

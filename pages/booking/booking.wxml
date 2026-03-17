@@ -1,0 +1,83 @@
+<view class="container">
+  <!-- 页面顶部 -->
+  <view class="page-header">
+    <text class="page-title">预约课程</text>
+    <text class="header-sub">未来14天可预约课程</text>
+  </view>
+
+  <!-- 剩余课时提示 -->
+  <view class="remaining-bar">
+    <text class="remaining-icon">🎫</text>
+    <text class="remaining-text">剩余课时：<text class="remaining-num">{{remainingClasses}}</text> 节</text>
+  </view>
+
+  <!-- 课程列表 -->
+  <view class="list-container">
+    <block wx:if="{{courseList.length > 0}}">
+      <view
+        class="course-card {{item.booked ? 'booked' : ''}}"
+        wx:for="{{courseList}}"
+        wx:key="id"
+      >
+        <!-- 课程头部 -->
+        <view class="course-header">
+          <view class="course-name-row">
+            <text class="course-name">{{item.courseName}}</text>
+            <text class="tag {{item.difficultyClass}}">{{item.difficulty}}</text>
+          </view>
+          <view class="booked-badge" wx:if="{{item.booked}}">
+            <text class="booked-text">✓ 已预约</text>
+          </view>
+        </view>
+
+        <!-- 课程详情 -->
+        <view class="course-details">
+          <view class="detail-row">
+            <text class="detail-item">📅 {{item.dateDisplay}} {{item.dayOfWeek}}</text>
+            <text class="detail-item">🕐 {{item.time}}</text>
+          </view>
+          <view class="detail-row">
+            <text class="detail-item">👤 {{item.coach}}</text>
+            <text class="detail-item">⏱ {{item.duration}}分钟</text>
+          </view>
+          <view class="detail-row">
+            <text class="detail-item">📍 {{item.location}}</text>
+            <text class="detail-item seats-info {{item.seatsLeft <= 3 ? 'seats-low' : ''}}">👥 剩余{{item.seatsLeft}}位</text>
+          </view>
+        </view>
+
+        <!-- 课程描述 -->
+        <text class="course-desc">{{item.description}}</text>
+
+        <!-- 操作按钮 -->
+        <view class="action-row">
+          <view wx:if="{{item.booked}}" class="cancel-book-btn" catchtap="cancelBooking" data-id="{{item.id}}">
+            <text>取消预约</text>
+          </view>
+          <view
+            wx:elif="{{item.seatsLeft <= 0}}"
+            class="full-btn"
+          >
+            <text>名额已满</text>
+          </view>
+          <view
+            wx:elif="{{remainingClasses <= 0}}"
+            class="no-class-btn"
+          >
+            <text>课时不足</text>
+          </view>
+          <view wx:else class="book-btn" catchtap="bookCourse" data-id="{{item.id}}">
+            <text>立即预约</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view wx:else class="empty-state">
+      <text class="empty-icon">📋</text>
+      <text class="empty-text">暂无可预约的课程</text>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>

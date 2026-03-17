@@ -1,0 +1,130 @@
+<view class="container">
+  <!-- 头部个人信息 -->
+  <view class="profile-header">
+    <view class="avatar-wrap">
+      <view class="avatar-circle">
+        <text class="avatar-char">{{userInfo.avatar}}</text>
+      </view>
+      <view class="level-badge-wrap">
+        <text class="belt-level">{{userInfo.level}}</text>
+      </view>
+    </view>
+    <text class="user-name">{{userInfo.name}}</text>
+    <text class="member-level">{{userInfo.memberLevel}}</text>
+    <text class="join-date">加入时间：{{userInfo.joinDate}}</text>
+  </view>
+
+  <!-- 数据概览 -->
+  <view class="stats-card">
+    <view class="stat-item" bindtap="goToPoints">
+      <text class="stat-num gold">{{userInfo.points}}</text>
+      <text class="stat-label">积分</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="goToSchedule">
+      <text class="stat-num">{{remainingClasses}}</text>
+      <text class="stat-label">剩余课时</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num red">{{completedCount}}</text>
+      <text class="stat-label">已完成课程</text>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="info-card">
+    <view class="info-card-title">基本信息</view>
+    <view class="info-row">
+      <text class="info-label">姓　名</text>
+      <text class="info-value">{{userInfo.name}}</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">手机号</text>
+      <text class="info-value">{{maskedPhone}}</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">会员等级</text>
+      <text class="info-value gold-text">{{userInfo.memberLevel}}</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">腰带级别</text>
+      <text class="info-value">{{userInfo.level}}</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">加入时间</text>
+      <text class="info-value">{{userInfo.joinDate}}</text>
+    </view>
+  </view>
+
+  <!-- 套餐信息 -->
+  <view class="info-card">
+    <view class="info-card-title">套餐信息</view>
+    <view class="info-row">
+      <text class="info-label">套餐名称</text>
+      <text class="info-value">{{userInfo.package.name}}</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">总课时数</text>
+      <text class="info-value">{{userInfo.package.total}} 节</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">已用课时</text>
+      <text class="info-value">{{userInfo.package.used}} 节</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">剩余课时</text>
+      <text class="info-value red-text">{{remainingClasses}} 节</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">有效期至</text>
+      <text class="info-value">{{userInfo.package.expireDate}}</text>
+    </view>
+    <!-- 进度条 -->
+    <view class="progress-section">
+      <view class="progress-bar-track">
+        <view class="progress-bar-fill" style="width: {{progressPercent}}%"></view>
+      </view>
+      <view class="progress-labels">
+        <text class="pl-used">已用 {{progressPercent}}%</text>
+        <text class="pl-remain">剩余 {{100 - progressPercent}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-card">
+    <view class="menu-item" bindtap="goToPoints">
+      <text class="menu-icon">⭐</text>
+      <text class="menu-text">积分中心</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-divider"></view>
+    <view class="menu-item" bindtap="goToSchedule">
+      <text class="menu-icon">📅</text>
+      <text class="menu-text">我的课程</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-divider"></view>
+    <view class="menu-item" bindtap="goToBooking">
+      <text class="menu-icon">📋</text>
+      <text class="menu-text">预约课程</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>

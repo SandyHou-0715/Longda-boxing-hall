@@ -1,0 +1,225 @@
+/* 课程表页样式 */
+.container {
+  background: #f0f0f0;
+  min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-header {
+  background: linear-gradient(135deg, #1a1a1a, #3d0000);
+  padding: 30rpx 30rpx 40rpx;
+}
+
+.page-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* 筛选标签栏 */
+.filter-bar {
+  background: #ffffff;
+  display: flex;
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.filter-tab {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 26rpx;
+  color: #666666;
+  border-bottom: 4rpx solid transparent;
+  transition: all 0.2s;
+}
+
+.filter-tab.active {
+  color: #c0392b;
+  font-weight: bold;
+  border-bottom-color: #c0392b;
+}
+
+/* 统计行 */
+.summary-row {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  margin-bottom: 16rpx;
+}
+
+.summary-item {
+  flex: 1;
+  text-align: center;
+}
+
+.summary-num {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.summary-num.pending {
+  color: #1565c0;
+}
+
+.summary-num.completed {
+  color: #2e7d32;
+}
+
+.summary-num.cancelled {
+  color: #757575;
+}
+
+.summary-label {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.summary-divider {
+  width: 1rpx;
+  height: 50rpx;
+  background: #e0e0e0;
+}
+
+/* 列表容器 */
+.list-container {
+  padding: 0 20rpx;
+}
+
+/* 课程卡片 */
+.course-item {
+  background: #ffffff;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.course-date-col {
+  width: 80rpx;
+  text-align: center;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.course-month {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #c0392b;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.course-day {
+  font-size: 20rpx;
+  color: #999999;
+}
+
+.course-body {
+  flex: 1;
+}
+
+.course-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.course-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+  flex: 1;
+}
+
+.course-meta-row {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 6rpx;
+}
+
+.meta-item {
+  font-size: 22rpx;
+  color: #666666;
+}
+
+/* 标签 */
+.tag {
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  margin-left: 12rpx;
+}
+
+.tag-pending {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.tag-completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.tag-cancelled {
+  background: #f5f5f5;
+  color: #757575;
+}
+
+/* 取消按钮 */
+.cancel-btn {
+  padding: 8rpx 20rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 20rpx;
+  flex-shrink: 0;
+  margin-left: 12rpx;
+  align-self: center;
+}
+
+.cancel-text {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 30rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 40rpx;
+}
+
+.go-book-btn {
+  background: #c0392b;
+  color: #ffffff;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding: 0 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: none;
+}
+
+.go-book-btn::after {
+  border: none;
+}
