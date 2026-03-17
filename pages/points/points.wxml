@@ -1,0 +1,94 @@
+<view class="container">
+  <!-- 顶部积分展示 -->
+  <view class="points-header">
+    <view class="points-circle">
+      <text class="points-icon">⭐</text>
+    </view>
+    <text class="points-value">{{userInfo.points}}</text>
+    <text class="points-unit">积分</text>
+    <view class="member-badge">
+      <text class="member-text">{{userInfo.memberLevel}}</text>
+    </view>
+  </view>
+
+  <!-- 快速统计 -->
+  <view class="quick-stats">
+    <view class="quick-stat-item">
+      <text class="qs-num earn">+{{totalEarned}}</text>
+      <text class="qs-label">累计获得</text>
+    </view>
+    <view class="qs-divider"></view>
+    <view class="quick-stat-item">
+      <text class="qs-num spend">-{{totalSpent}}</text>
+      <text class="qs-label">累计消耗</text>
+    </view>
+    <view class="qs-divider"></view>
+    <view class="quick-stat-item">
+      <text class="qs-num">{{historyCount}}</text>
+      <text class="qs-label">记录条数</text>
+    </view>
+  </view>
+
+  <!-- 积分记录标签切换 -->
+  <view class="tab-bar">
+    <view class="tab {{activeTab === 'history' ? 'active' : ''}}" bindtap="switchTab" data-tab="history">
+      积分记录
+    </view>
+    <view class="tab {{activeTab === 'rules' ? 'active' : ''}}" bindtap="switchTab" data-tab="rules">
+      积分规则
+    </view>
+  </view>
+
+  <!-- 积分记录列表 -->
+  <view class="list-container" wx:if="{{activeTab === 'history'}}">
+    <block wx:if="{{historyList.length > 0}}">
+      <view class="history-item" wx:for="{{historyList}}" wx:key="id">
+        <view class="history-icon {{item.type === 'earn' ? 'earn-icon' : 'spend-icon'}}">
+          <text>{{item.type === 'earn' ? '↑' : '↓'}}</text>
+        </view>
+        <view class="history-content">
+          <text class="history-reason">{{item.reason}}</text>
+          <text class="history-date">{{item.date}}</text>
+        </view>
+        <view class="history-right">
+          <text class="history-amount {{item.type === 'earn' ? 'earn-amount' : 'spend-amount'}}">
+            {{item.type === 'earn' ? '+' : '-'}}{{item.amount}}
+          </text>
+          <text class="history-balance">余 {{item.balance}}</text>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="empty-state">
+      <text class="empty-icon">📊</text>
+      <text class="empty-text">暂无积分记录</text>
+    </view>
+  </view>
+
+  <!-- 积分规则 -->
+  <view class="list-container" wx:if="{{activeTab === 'rules'}}">
+    <view class="rules-section">
+      <view class="rule-group">
+        <text class="rule-group-title">🎁 获取积分</text>
+        <view class="rule-item earn-rule" wx:for="{{earnRules}}" wx:key="id">
+          <view class="rule-info">
+            <text class="rule-event">{{item.event}}</text>
+            <text class="rule-desc">{{item.description}}</text>
+          </view>
+          <text class="rule-points earn-points">+{{item.points}}</text>
+        </view>
+      </view>
+      <view class="rule-group">
+        <text class="rule-group-title">🛍 消耗积分</text>
+        <view class="rule-item spend-rule" wx:for="{{spendRules}}" wx:key="id">
+          <view class="rule-info">
+            <text class="rule-event">{{item.event}}</text>
+            <text class="rule-desc">{{item.description}}</text>
+          </view>
+          <text class="rule-points spend-points">{{item.points}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>

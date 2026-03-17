@@ -1,0 +1,149 @@
+/* 全局样式 - 龙达跆拳道馆 */
+/* 颜色变量 */
+/* --primary: #c0392b (红色) */
+/* --accent: #f39c12 (金色) */
+/* --dark: #1a1a1a (黑色) */
+
+page {
+  background-color: #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+  color: #333333;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* 通用容器 */
+.container {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 卡片样式 */
+.card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  margin: 20rpx 30rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 主色按钮 */
+.btn-primary {
+  background: #c0392b;
+  color: #ffffff;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  border: none;
+  padding: 0;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+/* 次要按钮 */
+.btn-secondary {
+  background: transparent;
+  color: #c0392b;
+  border: 2rpx solid #c0392b;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding: 0;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+
+.btn-secondary::after {
+  border: none;
+}
+
+/* 标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+  padding: 30rpx;
+}
+
+/* 分割线 */
+.divider {
+  height: 1rpx;
+  background: #e8e8e8;
+  margin: 20rpx 0;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 30rpx;
+  color: #999999;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.tag-beginner {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.tag-intermediate {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.tag-advanced {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.tag-pending {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.tag-completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.tag-cancelled {
+  background: #f5f5f5;
+  color: #757575;
+}
+
+/* 进度条 */
+.progress-bar-track {
+  background: #e0e0e0;
+  border-radius: 8rpx;
+  height: 16rpx;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 8rpx;
+  background: linear-gradient(90deg, #c0392b, #f39c12);
+  transition: width 0.3s ease;
+}

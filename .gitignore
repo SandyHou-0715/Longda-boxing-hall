@@ -1,24 +1,22 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# 微信开发者工具生成的文件
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# 编辑器配置
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# 日志
+*.log
+
+# 微信小程序本地开发配置（包含个人AppID，不提交）
+project.private.config.json
+
+# node相关（如使用npm构建）
+node_modules/
+miniprogram_npm/

@@ -1,0 +1,121 @@
+<view class="container">
+  <!-- 顶部横幅 -->
+  <view class="banner">
+    <view class="banner-left">
+      <view class="avatar-circle">
+        <text class="avatar-text">{{userInfo.avatar}}</text>
+      </view>
+      <view class="user-info">
+        <text class="welcome-text">你好，{{userInfo.name}} 👋</text>
+        <view class="level-badge">
+          <text class="level-text">{{userInfo.memberLevel}} · {{userInfo.level}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="banner-right">
+      <text class="date-text">{{todayStr}}</text>
+    </view>
+  </view>
+
+  <!-- 数据概览卡片 -->
+  <view class="stats-row">
+    <view class="stat-card" bindtap="goToSchedule">
+      <text class="stat-number">{{remainingClasses}}</text>
+      <text class="stat-label">剩余课时</text>
+    </view>
+    <view class="stat-card gold" bindtap="goToPoints">
+      <text class="stat-number">{{userInfo.points}}</text>
+      <text class="stat-label">我的积分</text>
+    </view>
+    <view class="stat-card red" bindtap="goToSchedule">
+      <text class="stat-number">{{upcomingCount}}</text>
+      <text class="stat-label">待上课程</text>
+    </view>
+  </view>
+
+  <!-- 课程进度卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-title">课程套餐</text>
+      <text class="card-link" bindtap="goToSchedule">查看全部 ›</text>
+    </view>
+    <view class="package-info">
+      <text class="package-name">{{userInfo.package.name}}</text>
+      <text class="package-expire">有效期至 {{userInfo.package.expireDate}}</text>
+    </view>
+    <view class="progress-section">
+      <view class="progress-labels">
+        <text class="progress-used">已用 {{userInfo.package.used}} 节</text>
+        <text class="progress-total">共 {{userInfo.package.total}} 节</text>
+      </view>
+      <view class="progress-bar-track">
+        <view class="progress-bar-fill" style="width: {{progressPercent}}%"></view>
+      </view>
+      <text class="progress-remain">剩余 {{remainingClasses}} 节</text>
+    </view>
+  </view>
+
+  <!-- 近期课程 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-title">近期课程</text>
+      <text class="card-link" bindtap="goToSchedule">查看全部 ›</text>
+    </view>
+
+    <block wx:if="{{recentSchedule.length > 0}}">
+      <view class="schedule-item" wx:for="{{recentSchedule}}" wx:key="id">
+        <view class="schedule-left">
+          <text class="schedule-date">{{item.dateDisplay}}</text>
+          <text class="schedule-day">{{item.dayOfWeek}}</text>
+        </view>
+        <view class="schedule-divider"></view>
+        <view class="schedule-right">
+          <text class="schedule-course">{{item.courseName}}</text>
+          <text class="schedule-meta">{{item.time}} · {{item.coach}} · {{item.location}}</text>
+        </view>
+        <view class="schedule-status">
+          <text class="tag {{item.statusClass}}">{{item.status}}</text>
+        </view>
+      </view>
+    </block>
+
+    <view wx:else class="empty-state">
+      <text class="empty-icon">📅</text>
+      <text class="empty-text">暂无近期课程，去预约吧</text>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="card">
+    <text class="card-title" style="margin-bottom: 30rpx; display: block;">快捷入口</text>
+    <view class="quick-nav">
+      <view class="nav-item" bindtap="goToBooking">
+        <view class="nav-icon-box red-bg">
+          <text class="nav-icon">📋</text>
+        </view>
+        <text class="nav-label">预约课程</text>
+      </view>
+      <view class="nav-item" bindtap="goToSchedule">
+        <view class="nav-icon-box dark-bg">
+          <text class="nav-icon">📅</text>
+        </view>
+        <text class="nav-label">我的课程</text>
+      </view>
+      <view class="nav-item" bindtap="goToPoints">
+        <view class="nav-icon-box gold-bg">
+          <text class="nav-icon">⭐</text>
+        </view>
+        <text class="nav-label">积分中心</text>
+      </view>
+      <view class="nav-item" bindtap="goToProfile">
+        <view class="nav-icon-box gray-bg">
+          <text class="nav-icon">👤</text>
+        </view>
+        <text class="nav-label">个人信息</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部间距 -->
+  <view style="height: 40rpx;"></view>
+</view>

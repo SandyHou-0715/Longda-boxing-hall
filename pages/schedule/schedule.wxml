@@ -1,0 +1,92 @@
+<view class="container">
+  <!-- 页面顶部标题 -->
+  <view class="page-header">
+    <text class="page-title">我的课程表</text>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="filter-bar">
+    <view
+      class="filter-tab {{activeFilter === 'all' ? 'active' : ''}}"
+      bindtap="setFilter"
+      data-filter="all"
+    >全部</view>
+    <view
+      class="filter-tab {{activeFilter === '待上课' ? 'active' : ''}}"
+      bindtap="setFilter"
+      data-filter="待上课"
+    >待上课</view>
+    <view
+      class="filter-tab {{activeFilter === '已完成' ? 'active' : ''}}"
+      bindtap="setFilter"
+      data-filter="已完成"
+    >已完成</view>
+    <view
+      class="filter-tab {{activeFilter === '已取消' ? 'active' : ''}}"
+      bindtap="setFilter"
+      data-filter="已取消"
+    >已取消</view>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="summary-row">
+    <view class="summary-item">
+      <text class="summary-num">{{totalCount}}</text>
+      <text class="summary-label">全部</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-num pending">{{pendingCount}}</text>
+      <text class="summary-label">待上课</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-num completed">{{completedCount}}</text>
+      <text class="summary-label">已完成</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-num cancelled">{{cancelledCount}}</text>
+      <text class="summary-label">已取消</text>
+    </view>
+  </view>
+
+  <!-- 课程列表 -->
+  <view class="list-container">
+    <block wx:if="{{filteredList.length > 0}}">
+      <view class="course-item" wx:for="{{filteredList}}" wx:key="id">
+        <view class="course-date-col">
+          <text class="course-month">{{item.dateDisplay}}</text>
+          <text class="course-day">{{item.dayOfWeek}}</text>
+        </view>
+        <view class="course-body">
+          <view class="course-top-row">
+            <text class="course-name">{{item.courseName}}</text>
+            <text class="tag {{item.statusClass}}">{{item.status}}</text>
+          </view>
+          <view class="course-meta-row">
+            <text class="meta-item">🕐 {{item.time}}</text>
+            <text class="meta-item">👤 {{item.coach}}</text>
+          </view>
+          <view class="course-meta-row">
+            <text class="meta-item">📍 {{item.location}}</text>
+            <text class="meta-item">⏱ {{item.duration}}分钟</text>
+          </view>
+        </view>
+        <!-- 取消预约按钮（仅待上课状态显示） -->
+        <view wx:if="{{item.status === '待上课'}}" class="cancel-btn" catchtap="cancelCourse" data-id="{{item.id}}">
+          <text class="cancel-text">取消</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- 空状态 -->
+    <view wx:else class="empty-state">
+      <text class="empty-icon">📅</text>
+      <text class="empty-text">暂无{{activeFilter === 'all' ? '' : activeFilter}}课程记录</text>
+      <button wx:if="{{activeFilter === 'all' || activeFilter === '待上课'}}" class="go-book-btn" bindtap="goToBooking">去预约课程</button>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>
