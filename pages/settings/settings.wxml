@@ -1,0 +1,40 @@
+<view class="container">
+  <!-- 通知设置 -->
+  <view class="section-title">通知设置</view>
+  <view class="menu-card">
+    <view class="menu-item">
+      <text class="menu-icon">🔔</text>
+      <text class="menu-text">消息通知</text>
+      <switch checked="{{notifications}}" bindchange="onNotificationsChange" color="#e63946" />
+    </view>
+    <view class="menu-divider"></view>
+    <view class="menu-item">
+      <text class="menu-icon">🔊</text>
+      <text class="menu-text">音效</text>
+      <switch checked="{{soundEffects}}" bindchange="onSoundEffectsChange" color="#e63946" />
+    </view>
+  </view>
+
+  <!-- 其他操作 -->
+  <view class="section-title">其他</view>
+  <view class="menu-card">
+    <view class="menu-item" bindtap="clearCache">
+      <text class="menu-icon">🗑</text>
+      <text class="menu-text">清除缓存</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-divider"></view>
+    <view class="menu-item">
+      <text class="menu-icon">ℹ️</text>
+      <text class="menu-text">版本信息</text>
+      <text class="menu-version">{{version}}</text>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>

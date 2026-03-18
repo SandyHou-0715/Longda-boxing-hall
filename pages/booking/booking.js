@@ -20,7 +20,7 @@ Page({
   loadData: function (userInfo) {
     this.setData({ userInfo: userInfo });
 
-    var remaining = userInfo.package.total - userInfo.package.used;
+    var remaining = userInfo.remainingClasses || 0;
 
     // 获取用户已预约的课程ID列表（从课程表中找出"待上课"状态的预约课程）
     var scheduleKey = 'schedule_' + userInfo.id;
@@ -68,7 +68,7 @@ Page({
     if (!course) return;
 
     // 检查课时
-    if (userInfo.package.used >= userInfo.package.total) {
+    if ((userInfo.remainingClasses || 0) <= 0) {
       wx.showToast({ title: '课时不足，请续费', icon: 'none' });
       return;
     }
@@ -80,7 +80,8 @@ Page({
       success: function (res) {
         if (res.confirm) {
           // 扣减课时
-          userInfo.package.used += 1;
+          userInfo.usedClasses = (userInfo.usedClasses || 0) + 1;
+          userInfo.remainingClasses = Math.max(0, (userInfo.remainingClasses || 0) - 1);
           wx.setStorageSync('userInfo', userInfo);
 
           // 添加到课程表
@@ -132,7 +133,8 @@ Page({
           }
 
           // 退还课时
-          userInfo.package.used = Math.max(0, userInfo.package.used - 1);
+          userInfo.usedClasses = Math.max(0, (userInfo.usedClasses || 0) - 1);
+          userInfo.remainingClasses = (userInfo.remainingClasses || 0) + 1;
           wx.setStorageSync('userInfo', userInfo);
           wx.setStorageSync(scheduleKey, schedule);
 

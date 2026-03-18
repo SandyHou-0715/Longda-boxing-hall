@@ -7,35 +7,51 @@ Page({
     userInfo: null,
     todayStr: '',
     remainingClasses: 0,
-    progressPercent: 0,
+    consecutiveCheckIn: 0,
     recentSchedule: [],
-    upcomingCount: 0
+    banners: [],
+    announcements: [],
+    currentAnnouncement: '',
+    coachPreview: []
   },
+
+  _announcementTimer: null,
+  _announcementIndex: 0,
 
   onLoad: function () {
     this.loadData();
   },
 
   onShow: function () {
-    // 检查登录状态
     var userInfo = wx.getStorageSync('userInfo');
     if (!userInfo) {
       wx.reLaunch({ url: '/pages/login/login' });
       return;
     }
-    // 每次显示时刷新数据（预约后回来需要更新）
     this.loadData();
+  },
+
+  onUnload: function () {
+    if (this._announcementTimer) {
+      clearInterval(this._announcementTimer);
+    }
+  },
+
+  onHide: function () {
+    if (this._announcementTimer) {
+      clearInterval(this._announcementTimer);
+      this._announcementTimer = null;
+    }
   },
 
   loadData: function () {
     var userInfo = wx.getStorageSync('userInfo');
     if (!userInfo) return;
 
-    var pkg = userInfo.package;
-    var remaining = pkg.total - pkg.used;
-    var progress = util.calcProgress(pkg.used, pkg.total);
+    var remaining = userInfo.remainingClasses || 0;
+    var consecutiveCheckIn = userInfo.consecutiveCheckIn || 0;
 
-    // 获取近期课程（未来5节待上课 + 最近已完成2节）
+    // 获取近期课程
     var scheduleKey = 'schedule_' + userInfo.id;
     var schedule = wx.getStorageSync(scheduleKey) || mock.userSchedules[userInfo.id] || [];
 
@@ -52,36 +68,48 @@ Page({
       }
     }
 
-    // Sort upcoming ascending, completed descending
     upcoming.sort(function (a, b) { return new Date(a.date) - new Date(b.date); });
     completed.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
 
     var recent = upcoming.slice(0, 3).concat(completed.slice(0, 2));
     recent.sort(function (a, b) { return new Date(a.date) - new Date(b.date); });
 
-    // Enrich with display fields
     for (var i = 0; i < recent.length; i++) {
       recent[i].dateDisplay = util.formatDate(recent[i].date);
       recent[i].dayOfWeek = util.getDayOfWeek(recent[i].date);
       recent[i].statusClass = util.getStatusClass(recent[i].status);
     }
 
-    // Format today's date
     var now = new Date();
     var todayDisplay = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+
+    var announcements = mock.announcements || [];
+    var that = this;
+    this._announcementIndex = 0;
+
+    if (this._announcementTimer) {
+      clearInterval(this._announcementTimer);
+    }
+    this._announcementTimer = setInterval(function () {
+      that._announcementIndex = (that._announcementIndex + 1) % announcements.length;
+      that.setData({ currentAnnouncement: announcements[that._announcementIndex] });
+    }, 3000);
 
     this.setData({
       userInfo: userInfo,
       todayStr: todayDisplay,
       remainingClasses: remaining,
-      progressPercent: progress,
+      consecutiveCheckIn: consecutiveCheckIn,
       recentSchedule: recent,
-      upcomingCount: upcoming.length
+      banners: mock.banners || [],
+      announcements: announcements,
+      currentAnnouncement: announcements.length > 0 ? announcements[0] : '',
+      coachPreview: (mock.coaches || []).slice(0, 5)
     });
   },
 
   goToSchedule: function () {
-    wx.switchTab({ url: '/pages/schedule/schedule' });
+    wx.navigateTo({ url: '/pages/schedule/schedule' });
   },
 
   goToBooking: function () {
@@ -92,7 +120,24 @@ Page({
     wx.navigateTo({ url: '/pages/points/points' });
   },
 
+  goToCheckin: function () {
+    wx.switchTab({ url: '/pages/checkin/checkin' });
+  },
+
+  goToCoaches: function () {
+    wx.navigateTo({ url: '/pages/coaches/coaches' });
+  },
+
+  goToRecords: function () {
+    wx.navigateTo({ url: '/pages/records/records' });
+  },
+
+  goToMemberCard: function () {
+    wx.navigateTo({ url: '/pages/membercard/membercard' });
+  },
+
   goToProfile: function () {
     wx.switchTab({ url: '/pages/profile/profile' });
   }
 });
+

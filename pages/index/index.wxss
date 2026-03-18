@@ -4,32 +4,32 @@
   min-height: 100vh;
 }
 
-/* 顶部横幅 */
-.banner {
-  background: linear-gradient(135deg, #1a1a1a 0%, #3d0000 100%);
-  padding: 40rpx 30rpx 50rpx;
+/* 顶部头部区域 */
+.index-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 40rpx 30rpx 36rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.banner-left {
+.header-left {
   display: flex;
   align-items: center;
   flex: 1;
+  gap: 20rpx;
 }
 
 .avatar-circle {
   width: 96rpx;
   height: 96rpx;
-  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  background: linear-gradient(135deg, #e63946, #c1121f);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20rpx;
   flex-shrink: 0;
-  border: 3rpx solid rgba(243, 156, 18, 0.6);
+  border: 3rpx solid rgba(244, 162, 97, 0.6);
 }
 
 .avatar-text {
@@ -38,44 +38,83 @@
   font-weight: bold;
 }
 
-.user-info {
-  flex: 1;
-}
-
 .welcome-text {
-  font-size: 32rpx;
+  font-size: 30rpx;
   color: #ffffff;
   font-weight: bold;
   display: block;
   margin-bottom: 8rpx;
 }
 
-.level-badge {
-  display: inline-block;
-  background: rgba(243, 156, 18, 0.2);
-  border: 1rpx solid rgba(243, 156, 18, 0.5);
-  border-radius: 20rpx;
-  padding: 4rpx 16rpx;
-}
-
-.level-text {
+.member-badge {
   font-size: 22rpx;
-  color: #f39c12;
+  color: #f4a261;
+  display: block;
 }
 
-.banner-right {
+.today-text {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
 }
 
-.date-text {
-  font-size: 22rpx;
-  color: rgba(255, 255, 255, 0.5);
+/* 轮播图 */
+.banner-swiper {
+  height: 280rpx;
+  margin-bottom: 0;
 }
 
-/* 数据概览卡片 */
+.banner-slide {
+  height: 280rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40rpx;
+}
+
+.banner-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.banner-subtitle {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+}
+
+/* 公告栏 */
+.notice-bar {
+  background: #fff8e1;
+  display: flex;
+  align-items: center;
+  padding: 18rpx 24rpx;
+  border-bottom: 1rpx solid #ffe082;
+}
+
+.notice-icon {
+  font-size: 30rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.notice-scroll {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.notice-text {
+  font-size: 26rpx;
+  color: #795548;
+}
+
+/* 数据概览 */
 .stats-row {
   display: flex;
-  margin: -20rpx 20rpx 0;
+  margin: 20rpx 20rpx 0;
   gap: 16rpx;
 }
 
@@ -86,21 +125,21 @@
   padding: 28rpx 16rpx;
   text-align: center;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
-  border-top: 6rpx solid #1a1a1a;
+  border-top: 6rpx solid #1a1a2e;
 }
 
 .stat-card.gold {
-  border-top-color: #f39c12;
+  border-top-color: #f4a261;
 }
 
 .stat-card.red {
-  border-top-color: #c0392b;
+  border-top-color: #e63946;
 }
 
 .stat-number {
   font-size: 44rpx;
   font-weight: bold;
-  color: #1a1a1a;
+  color: #1a1a2e;
   display: block;
   margin-bottom: 6rpx;
 }
@@ -119,6 +158,10 @@
   box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
 }
 
+.card-title-row {
+  margin-bottom: 24rpx;
+}
+
 .card-header {
   display: flex;
   align-items: center;
@@ -129,73 +172,74 @@
 .card-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #1a1a1a;
+  color: #1a1a2e;
 }
 
 .card-link {
   font-size: 24rpx;
-  color: #c0392b;
+  color: #e63946;
 }
 
-/* 套餐进度 */
-.package-info {
+/* 快捷入口 - 6 items, 2 rows of 3 */
+.quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24rpx 0;
+}
+
+.nav-item {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.nav-icon-box {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 24rpx;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20rpx;
+  justify-content: center;
 }
 
-.package-name {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #333333;
+.red-bg {
+  background: linear-gradient(135deg, #e63946, #c1121f);
 }
 
-.package-expire {
-  font-size: 22rpx;
-  color: #999999;
+.green-bg {
+  background: linear-gradient(135deg, #2d6a4f, #40916c);
 }
 
-.progress-section {
-  background: #f8f8f8;
-  border-radius: 12rpx;
-  padding: 20rpx;
+.gold-bg {
+  background: linear-gradient(135deg, #e67e22, #f4a261);
 }
 
-.progress-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12rpx;
+.blue-bg {
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
 }
 
-.progress-used {
+.purple-bg {
+  background: linear-gradient(135deg, #6a0dad, #9b59b6);
+}
+
+.dark-bg {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+.gray-bg {
+  background: linear-gradient(135deg, #546e7a, #78909c);
+}
+
+.nav-icon {
+  font-size: 44rpx;
+}
+
+.nav-label {
   font-size: 24rpx;
   color: #666666;
-}
-
-.progress-total {
-  font-size: 24rpx;
-  color: #999999;
-}
-
-.progress-bar-track {
-  background: #e0e0e0;
-  border-radius: 8rpx;
-  height: 16rpx;
-  overflow: hidden;
-  margin-bottom: 12rpx;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: 8rpx;
-  background: linear-gradient(90deg, #c0392b, #f39c12);
-}
-
-.progress-remain {
-  font-size: 24rpx;
-  color: #c0392b;
-  font-weight: bold;
 }
 
 /* 近期课程列表 */
@@ -219,7 +263,7 @@
 .schedule-date {
   font-size: 26rpx;
   font-weight: bold;
-  color: #1a1a1a;
+  color: #1a1a2e;
   display: block;
 }
 
@@ -243,7 +287,7 @@
 .schedule-course {
   font-size: 28rpx;
   font-weight: bold;
-  color: #1a1a1a;
+  color: #1a1a2e;
   display: block;
   margin-bottom: 6rpx;
 }
@@ -256,6 +300,44 @@
 .schedule-status {
   margin-left: 16rpx;
   flex-shrink: 0;
+}
+
+/* 教练预览 */
+.coaches-preview {
+  display: flex;
+  flex-direction: row;
+  gap: 30rpx;
+  overflow-x: auto;
+  padding-bottom: 4rpx;
+}
+
+.coach-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+  flex-shrink: 0;
+}
+
+.coach-avatar-circle {
+  width: 88rpx;
+  height: 88rpx;
+  background: linear-gradient(135deg, #1a1a2e, #e63946);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coach-avatar-text {
+  font-size: 36rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.coach-name-text {
+  font-size: 22rpx;
+  color: #555555;
 }
 
 /* 空状态 */
@@ -296,51 +378,4 @@
 .tag-cancelled {
   background: #f5f5f5;
   color: #757575;
-}
-
-/* 快捷入口 */
-.quick-nav {
-  display: flex;
-  justify-content: space-around;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12rpx;
-}
-
-.nav-icon-box {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 24rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.red-bg {
-  background: linear-gradient(135deg, #c0392b, #e74c3c);
-}
-
-.dark-bg {
-  background: linear-gradient(135deg, #1a1a1a, #333333);
-}
-
-.gold-bg {
-  background: linear-gradient(135deg, #e67e22, #f39c12);
-}
-
-.gray-bg {
-  background: linear-gradient(135deg, #546e7a, #78909c);
-}
-
-.nav-icon {
-  font-size: 44rpx;
-}
-
-.nav-label {
-  font-size: 24rpx;
-  color: #666666;
 }

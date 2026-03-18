@@ -1,0 +1,85 @@
+<view class="container">
+  <!-- 馆名横幅 -->
+  <view class="about-hero">
+    <text class="hero-icon">🥊</text>
+    <text class="hero-title">龙达搏击馆</text>
+    <text class="hero-subtitle">专业 · 严谨 · 拼搏 · 荣耀</text>
+  </view>
+
+  <!-- 馆介 -->
+  <view class="card">
+    <text class="card-title">场馆简介</text>
+    <text class="intro-text">
+      龙达搏击馆成立于2010年，是北京地区具有专业资质的综合搏击训练中心。馆内设有自由搏击、拳击、散打、跆拳道等多个训练项目，拥有一支由国家级裁判和一级运动员组成的专业教练团队。多年来，龙达搏击馆为数千名学员提供了高水平的搏击技能训练，培养了众多在省市及全国赛事中获奖的优秀运动员。
+    </text>
+  </view>
+
+  <!-- 联系信息 -->
+  <view class="card">
+    <text class="card-title">联系我们</text>
+    <view class="contact-item">
+      <text class="contact-icon">📍</text>
+      <view class="contact-right">
+        <text class="contact-label">地址</text>
+        <text class="contact-value">北京市朝阳区搏击路88号龙达搏击馆</text>
+      </view>
+    </view>
+    <view class="contact-item">
+      <text class="contact-icon">📞</text>
+      <view class="contact-right">
+        <text class="contact-label">电话</text>
+        <text class="contact-value">010-88888888</text>
+      </view>
+    </view>
+    <view class="contact-item">
+      <text class="contact-icon">🕐</text>
+      <view class="contact-right">
+        <text class="contact-label">营业时间</text>
+        <text class="contact-value">周一至周五  06:00 - 22:00</text>
+        <text class="contact-value">周末  08:00 - 20:00</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发展历程 -->
+  <view class="card">
+    <text class="card-title">发展历程</text>
+    <view class="timeline-item">
+      <text class="timeline-year">2010</text>
+      <view class="timeline-dot"></view>
+      <text class="timeline-desc">龙达搏击馆正式成立，开设自由搏击和拳击两个项目。</text>
+    </view>
+    <view class="timeline-item">
+      <text class="timeline-year">2014</text>
+      <view class="timeline-dot"></view>
+      <text class="timeline-desc">增设散打和跆拳道项目，学员规模突破500人。</text>
+    </view>
+    <view class="timeline-item">
+      <text class="timeline-year">2018</text>
+      <view class="timeline-dot"></view>
+      <text class="timeline-desc">荣获市级优秀体育培训机构称号，扩大训练场地至2000㎡。</text>
+    </view>
+    <view class="timeline-item">
+      <text class="timeline-year">2022</text>
+      <view class="timeline-dot"></view>
+      <text class="timeline-desc">学员在全国搏击锦标赛中获得多枚金牌，品牌声誉大幅提升。</text>
+    </view>
+    <view class="timeline-item last">
+      <text class="timeline-year">2025</text>
+      <view class="timeline-dot active"></view>
+      <text class="timeline-desc">推出智能会员管理系统，全面升级服务体验。</text>
+    </view>
+  </view>
+
+  <!-- 场馆环境 -->
+  <view class="card">
+    <text class="card-title">场馆环境</text>
+    <view class="env-grid">
+      <view class="env-photo" wx:for="{{envPhotos}}" wx:key="label" style="background: {{item.color}}">
+        <text class="env-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>

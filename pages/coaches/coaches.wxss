@@ -1,0 +1,107 @@
+.container {
+  background: #f0f0f0;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+.coach-card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.coach-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.avatar-circle {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a1a2e, #e63946);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.avatar-text {
+  font-size: 44rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.coach-info {
+  flex: 1;
+}
+
+.coach-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+.coach-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #1a1a2e;
+}
+
+.coach-level {
+  font-size: 20rpx;
+  color: #e63946;
+  background: rgba(230, 57, 70, 0.1);
+  padding: 2rpx 12rpx;
+  border-radius: 16rpx;
+}
+
+.coach-specialty {
+  display: block;
+  font-size: 26rpx;
+  color: #555555;
+  margin-bottom: 6rpx;
+}
+
+.coach-years {
+  display: block;
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.coach-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.rating-num {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f4a261;
+}
+
+.rating-star {
+  font-size: 24rpx;
+}
+
+.coach-courses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.course-tag {
+  font-size: 22rpx;
+  color: #1565c0;
+  background: rgba(21, 101, 192, 0.08);
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(21, 101, 192, 0.2);
+}
