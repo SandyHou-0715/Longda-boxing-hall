@@ -125,7 +125,19 @@ Page({
 
     // Update user points and consecutiveCheckIn
     userInfo.points = (userInfo.points || 0) + 5;
-    userInfo.consecutiveCheckIn = (userInfo.consecutiveCheckIn || 0) + 1;
+
+    // Check if yesterday was checked in to determine consecutive streak
+    var yesterday = new Date(todayStr);
+    yesterday.setDate(yesterday.getDate() - 1);
+    var yesterdayStr = yesterday.toISOString().split('T')[0];
+    var checkedYesterday = false;
+    for (var j = 0; j < records.length - 1; j++) {
+      if (records[j].date === yesterdayStr) {
+        checkedYesterday = true;
+        break;
+      }
+    }
+    userInfo.consecutiveCheckIn = checkedYesterday ? (userInfo.consecutiveCheckIn || 0) + 1 : 1;
     userInfo.checkedInToday = true;
     wx.setStorageSync('userInfo', userInfo);
 

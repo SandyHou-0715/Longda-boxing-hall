@@ -34,6 +34,7 @@ Page({
   onUnload: function () {
     if (this._announcementTimer) {
       clearInterval(this._announcementTimer);
+      this._announcementTimer = null;
     }
   },
 

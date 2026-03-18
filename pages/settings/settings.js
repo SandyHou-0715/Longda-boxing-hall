@@ -29,7 +29,7 @@ Page({
   clearCache: function () {
     wx.showModal({
       title: '清除缓存',
-      content: '确定要清除本地缓存数据吗？课程记录和签到数据将被重置。',
+      content: '确定要清除本地缓存数据吗？预约记录和签到日历数据将被重置（用户账号信息保留）。',
       confirmColor: '#e63946',
       success: function (res) {
         if (res.confirm) {

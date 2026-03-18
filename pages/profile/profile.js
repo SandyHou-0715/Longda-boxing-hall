@@ -52,6 +52,7 @@ Page({
     wx.navigateTo({ url: '/pages/schedule/schedule' });
   },
 
+
   goToBooking: function () {
     wx.switchTab({ url: '/pages/booking/booking' });
   },

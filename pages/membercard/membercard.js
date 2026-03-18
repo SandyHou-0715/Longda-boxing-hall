@@ -23,9 +23,11 @@ Page({
     var daysLeft = 0;
     if (expiry) {
       var today = new Date();
+      today.setHours(0, 0, 0, 0);
       var expiryDate = new Date(expiry);
+      expiryDate.setHours(0, 0, 0, 0);
       var diff = expiryDate - today;
-      daysLeft = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+      daysLeft = Math.max(0, Math.round(diff / (1000 * 60 * 60 * 24)));
     }
 
     this.setData({
