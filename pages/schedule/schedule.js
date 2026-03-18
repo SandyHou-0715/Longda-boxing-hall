@@ -101,7 +101,8 @@ Page({
 
           if (found) {
             // 退还课时
-            userInfo.package.used = Math.max(0, userInfo.package.used - 1);
+            userInfo.usedClasses = Math.max(0, (userInfo.usedClasses || 0) - 1);
+            userInfo.remainingClasses = (userInfo.remainingClasses || 0) + 1;
             wx.setStorageSync('userInfo', userInfo);
             wx.setStorageSync(scheduleKey, schedule);
 

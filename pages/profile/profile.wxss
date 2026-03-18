@@ -36,11 +36,11 @@
   font-weight: bold;
 }
 
-.level-badge-wrap {
+.belt-badge-wrap {
   position: absolute;
   bottom: -8rpx;
   right: -8rpx;
-  background: #f39c12;
+  background: #f4a261;
   border-radius: 20rpx;
   padding: 4rpx 12rpx;
   border: 2rpx solid #ffffff;
@@ -48,7 +48,18 @@
 
 .belt-level {
   font-size: 18rpx;
-  color: #1a1a1a;
+  color: #1a1a2e;
+  font-weight: bold;
+}
+
+.member-type-expiry {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4rpx;
+}
+
+.belt-text {
+  color: #f4a261;
   font-weight: bold;
 }
 

@@ -1,0 +1,82 @@
+<view class="container">
+  <!-- 会员卡主体 -->
+  <view class="member-card">
+    <view class="card-top">
+      <view>
+        <text class="gym-name">龙达搏击馆</text>
+        <text class="card-type">{{userInfo.memberType}}</text>
+      </view>
+      <view class="card-avatar">
+        <text class="card-avatar-text">{{userInfo.avatar}}</text>
+      </view>
+    </view>
+    <view class="card-middle">
+      <text class="card-member-name">{{userInfo.name}}</text>
+      <text class="card-belt">{{userInfo.belt}}</text>
+    </view>
+    <view class="card-bottom">
+      <view>
+        <text class="card-label">有效期至</text>
+        <text class="card-value">{{userInfo.memberExpiry}}</text>
+      </view>
+      <view>
+        <text class="card-label">剩余天数</text>
+        <text class="card-value expire-days">{{daysLeft}} 天</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课时统计 -->
+  <view class="stats-card">
+    <view class="stat-item">
+      <text class="stat-num">{{userInfo.totalClasses}}</text>
+      <text class="stat-label">总课时</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num red">{{userInfo.usedClasses}}</text>
+      <text class="stat-label">已使用</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num green">{{userInfo.remainingClasses}}</text>
+      <text class="stat-label">剩余</text>
+    </view>
+  </view>
+
+  <!-- 课时进度 -->
+  <view class="card">
+    <text class="card-title">课时使用进度</text>
+    <view class="progress-labels">
+      <text class="pl-used">已用 {{userInfo.usedClasses}} 节</text>
+      <text class="pl-remain">剩余 {{userInfo.remainingClasses}} 节</text>
+    </view>
+    <view class="progress-bar-track">
+      <view class="progress-bar-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <text class="progress-percent">已使用 {{progressPercent}}%</text>
+  </view>
+
+  <!-- 会员权益 -->
+  <view class="card">
+    <text class="card-title">会员权益</text>
+    <view class="benefit-item">
+      <text class="benefit-icon">✅</text>
+      <text class="benefit-text">自由预约全馆课程</text>
+    </view>
+    <view class="benefit-item">
+      <text class="benefit-icon">✅</text>
+      <text class="benefit-text">每日签到获得积分</text>
+    </view>
+    <view class="benefit-item">
+      <text class="benefit-icon">✅</text>
+      <text class="benefit-text">积分兑换护具及优惠券</text>
+    </view>
+    <view class="benefit-item">
+      <text class="benefit-icon">✅</text>
+      <text class="benefit-text">优先参加馆内赛事</text>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>

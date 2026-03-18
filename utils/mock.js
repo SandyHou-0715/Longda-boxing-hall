@@ -7,16 +7,17 @@ var users = [
     password: '123456',
     name: '张三',
     avatar: '张',
-    level: '黑带一段',
-    memberLevel: '金牌会员',
+    belt: '黄带',
+    memberLevel: '黄带会员',
+    memberType: '季卡',
+    memberExpiry: '2026-06-30',
     joinDate: '2023-01-15',
-    package: {
-      name: '季度套餐',
-      total: 36,
-      used: 22,
-      expireDate: '2026-06-30'
-    },
-    points: 1280
+    totalClasses: 48,
+    usedClasses: 20,
+    remainingClasses: 28,
+    consecutiveCheckIn: 5,
+    checkedInToday: false,
+    points: 1580
   },
   {
     id: 2,
@@ -25,15 +26,16 @@ var users = [
     password: '123456',
     name: '李四',
     avatar: '李',
-    level: '红带',
-    memberLevel: '银牌会员',
+    belt: '橙带',
+    memberLevel: '橙带会员',
+    memberType: '月卡',
+    memberExpiry: '2026-04-30',
     joinDate: '2023-06-20',
-    package: {
-      name: '月度套餐',
-      total: 12,
-      used: 8,
-      expireDate: '2026-04-30'
-    },
+    totalClasses: 12,
+    usedClasses: 8,
+    remainingClasses: 4,
+    consecutiveCheckIn: 2,
+    checkedInToday: false,
     points: 640
   },
   {
@@ -43,15 +45,16 @@ var users = [
     password: '123456',
     name: '王五',
     avatar: '王',
-    level: '蓝带',
-    memberLevel: '金牌会员',
+    belt: '绿带',
+    memberLevel: '绿带会员',
+    memberType: '年卡',
+    memberExpiry: '2026-12-31',
     joinDate: '2024-02-10',
-    package: {
-      name: '年度套餐',
-      total: 120,
-      used: 45,
-      expireDate: '2026-12-31'
-    },
+    totalClasses: 120,
+    usedClasses: 45,
+    remainingClasses: 75,
+    consecutiveCheckIn: 12,
+    checkedInToday: false,
     points: 2560
   },
   {
@@ -61,15 +64,16 @@ var users = [
     password: '123456',
     name: '赵六',
     avatar: '赵',
-    level: '白带',
-    memberLevel: '普通会员',
+    belt: '白带',
+    memberLevel: '白带会员',
+    memberType: '次卡(10次)',
+    memberExpiry: '2026-04-15',
     joinDate: '2024-09-01',
-    package: {
-      name: '月度套餐',
-      total: 12,
-      used: 3,
-      expireDate: '2026-04-15'
-    },
+    totalClasses: 10,
+    usedClasses: 3,
+    remainingClasses: 7,
+    consecutiveCheckIn: 0,
+    checkedInToday: false,
     points: 180
   },
   {
@@ -79,38 +83,100 @@ var users = [
     password: '123456',
     name: '陈七',
     avatar: '陈',
-    level: '黑带二段',
-    memberLevel: '钻石会员',
+    belt: '黑带',
+    memberLevel: '黑带会员',
+    memberType: '年卡',
+    memberExpiry: '2026-05-31',
     joinDate: '2022-05-05',
-    package: {
-      name: '年度套餐',
-      total: 120,
-      used: 98,
-      expireDate: '2026-05-31'
-    },
+    totalClasses: 120,
+    usedClasses: 98,
+    remainingClasses: 22,
+    consecutiveCheckIn: 21,
+    checkedInToday: false,
     points: 5800
   }
 ];
 
 // ===== 教练数据 =====
 var coaches = [
-  { id: 1, name: '金教练', specialty: '基础跆拳道', level: '黑带四段' },
-  { id: 2, name: '朴教练', specialty: '竞技跆拳道', level: '黑带三段' },
-  { id: 3, name: '李教练', specialty: '品势训练', level: '黑带三段' },
-  { id: 4, name: '刘教练', specialty: '青少年班', level: '黑带二段' }
+  {
+    id: 1,
+    name: '陈志远',
+    specialty: '自由搏击',
+    avatar: '陈',
+    years: 12,
+    level: '国家级裁判',
+    students: 268,
+    rating: 4.9,
+    bio: '前职业搏击运动员，参加过多项国内外搏击赛事，拥有丰富的实战和教学经验。',
+    honors: ['全国搏击锦标赛冠军', '亚洲搏击公开赛银牌', '10年教学经验'],
+    courses: ['自由搏击基础', '实战对练', '体能强化']
+  },
+  {
+    id: 2,
+    name: '李明浩',
+    specialty: '拳击',
+    avatar: '李',
+    years: 8,
+    level: '国家一级运动员',
+    students: 195,
+    rating: 4.8,
+    bio: '专业拳击教练，擅长体能训练和技术动作的精确指导，多次带领学员参加省市比赛。',
+    honors: ['省级拳击冠军', '最受学员喜爱教练奖'],
+    courses: ['拳击入门', '拳击提高班', '竞技拳击']
+  },
+  {
+    id: 3,
+    name: '王芳',
+    specialty: '跆拳道',
+    avatar: '王',
+    years: 10,
+    level: '黑带四段',
+    students: 312,
+    rating: 4.9,
+    bio: '跆拳道黑带四段，专注基础教学和品势训练，深受学员和家长好评。',
+    honors: ['全国跆拳道品势冠军', '优秀教练员称号'],
+    courses: ['跆拳道基础', '品势训练', '儿童跆拳道']
+  },
+  {
+    id: 4,
+    name: '张磊',
+    specialty: '散打',
+    avatar: '张',
+    years: 6,
+    level: '国家二级运动员',
+    students: 145,
+    rating: 4.7,
+    bio: '散打运动员出身，擅长腿法和摔法的教学，风格实战派，课程紧凑高效。',
+    honors: ['市散打锦标赛亚军', '年度最佳新锐教练'],
+    courses: ['散打基础', '腿法专项', '综合格斗']
+  },
+  {
+    id: 5,
+    name: '刘晓燕',
+    specialty: '体能训练',
+    avatar: '刘',
+    years: 5,
+    level: '国家体能认证教练',
+    students: 223,
+    rating: 4.8,
+    bio: '专业体能训练师，帮助学员全面提升身体素质，制定个性化训练方案。',
+    honors: ['NSCA认证体能教练', '运动营养师资格证'],
+    courses: ['基础体能', '核心训练', '爆发力训练']
+  }
 ];
 
 // ===== 可预约课程模板 =====
 var courseTemplates = [
   {
     id: 101,
-    name: '基础跆拳道',
+    name: '自由搏击基础',
     coachId: 1,
-    duration: 60,
+    duration: 90,
     difficulty: '初级',
-    maxCapacity: 20,
-    location: 'A训练馆',
-    description: '适合初学者的基础课程，学习基本动作和礼仪。',
+    maxCapacity: 15,
+    location: 'A搏击馆',
+    description: '学习基本站架、步伐和基础打击组合，适合零基础学员。',
     schedule: [
       { dayOfWeek: 1, time: '09:00' },
       { dayOfWeek: 3, time: '09:00' },
@@ -119,13 +185,13 @@ var courseTemplates = [
   },
   {
     id: 102,
-    name: '竞技训练',
-    coachId: 2,
+    name: '实战对练',
+    coachId: 1,
     duration: 90,
     difficulty: '高级',
-    maxCapacity: 12,
-    location: 'B训练馆',
-    description: '针对参加比赛的学员，提升技术和体能。',
+    maxCapacity: 10,
+    location: 'A搏击馆',
+    description: '有一定基础的学员进行实战对练，提升实战技能。',
     schedule: [
       { dayOfWeek: 2, time: '18:30' },
       { dayOfWeek: 4, time: '18:30' },
@@ -134,13 +200,13 @@ var courseTemplates = [
   },
   {
     id: 103,
-    name: '品势专项',
-    coachId: 3,
-    duration: 75,
-    difficulty: '中级',
-    maxCapacity: 15,
-    location: 'A训练馆',
-    description: '专注品势套路练习，适合备赛或提升段位。',
+    name: '拳击入门',
+    coachId: 2,
+    duration: 60,
+    difficulty: '初级',
+    maxCapacity: 20,
+    location: 'B拳击馆',
+    description: '专业拳击入门课程，学习基本步伐、防御和进攻技术。',
     schedule: [
       { dayOfWeek: 1, time: '18:00' },
       { dayOfWeek: 3, time: '18:00' },
@@ -149,13 +215,13 @@ var courseTemplates = [
   },
   {
     id: 104,
-    name: '青少年班',
-    coachId: 4,
+    name: '跆拳道基础班',
+    coachId: 3,
     duration: 60,
     difficulty: '初级',
     maxCapacity: 25,
     location: 'C训练馆',
-    description: '专为8-14岁青少年设计，寓教于乐。',
+    description: '跆拳道基础入门，适合8岁以上所有年龄段学员。',
     schedule: [
       { dayOfWeek: 2, time: '16:00' },
       { dayOfWeek: 4, time: '16:00' },
@@ -164,17 +230,46 @@ var courseTemplates = [
   },
   {
     id: 105,
-    name: '体能强化',
-    coachId: 2,
+    name: '体能强化训练',
+    coachId: 5,
     duration: 60,
     difficulty: '中级',
-    maxCapacity: 18,
-    location: 'B训练馆',
-    description: '以体能训练为主，增强力量、速度和耐力。',
+    maxCapacity: 20,
+    location: 'D综合馆',
+    description: '专项体能训练，增强力量、速度、耐力和柔韧性。',
     schedule: [
       { dayOfWeek: 1, time: '20:00' },
       { dayOfWeek: 3, time: '20:00' },
       { dayOfWeek: 5, time: '20:00' }
+    ]
+  },
+  {
+    id: 106,
+    name: '散打基础',
+    coachId: 4,
+    duration: 75,
+    difficulty: '初级',
+    maxCapacity: 15,
+    location: 'A搏击馆',
+    description: '散打基础技术学习，包括基本拳腿技术和防御技巧。',
+    schedule: [
+      { dayOfWeek: 2, time: '09:00' },
+      { dayOfWeek: 4, time: '09:00' },
+      { dayOfWeek: 6, time: '09:00' }
+    ]
+  },
+  {
+    id: 107,
+    name: '儿童跆拳道',
+    coachId: 3,
+    duration: 60,
+    difficulty: '初级',
+    maxCapacity: 20,
+    location: 'C训练馆',
+    description: '专为5-12岁儿童设计，寓教于乐，培养礼仪和毅力。',
+    schedule: [
+      { dayOfWeek: 3, time: '15:30' },
+      { dayOfWeek: 6, time: '10:00' }
     ]
   }
 ];
@@ -237,9 +332,9 @@ function generateUserSchedule(userId) {
   var records = [];
   var id = userId * 1000;
 
-  var courseNames = ['基础跆拳道', '竞技训练', '品势专项', '体能强化', '青少年班'];
-  var coachNames = ['金教练', '朴教练', '李教练', '刘教练'];
-  var locations = ['A训练馆', 'B训练馆', 'C训练馆'];
+  var courseNames = ['自由搏击基础', '实战对练', '拳击入门', '体能强化训练', '散打基础', '跆拳道基础班'];
+  var coachNames = ['陈志远', '李明浩', '王芳', '张磊', '刘晓燕'];
+  var locations = ['A搏击馆', 'B拳击馆', 'C训练馆', 'D综合馆'];
   var times = ['09:00', '10:30', '14:00', '18:00', '20:00'];
   var durations = [60, 75, 90];
 
@@ -304,8 +399,8 @@ function generatePointsHistory(userId) {
   var today = new Date();
   var runningTotal = 0;
 
-  var earnReasons = ['完成课程', '连续签到', '邀请好友', '参加比赛', '节日赠送'];
-  var spendReasons = ['兑换护具', '兑换道服', '兑换课程优惠券', '积分抵现'];
+  var earnReasons = ['完成搏击课程', '连续签到奖励', '邀请好友入馆', '参加馆内比赛', '节日赠送积分'];
+  var spendReasons = ['兑换护具', '兑换拳击手套', '兑换课程优惠券', '积分抵现'];
   var earnAmounts = [10, 20, 30, 50, 100];
   var spendAmounts = [50, 100, 200];
 
@@ -341,7 +436,6 @@ function generatePointsHistory(userId) {
     }
   }
 
-  // 调整到与用户积分一致
   var diff = user.points - runningTotal;
   if (diff !== 0) {
     history.push({
@@ -368,15 +462,65 @@ var pointsHistories = {
 
 // ===== 积分规则 =====
 var pointsRules = [
-  { id: 1, event: '完成一节课', points: 10, description: '每次按时出席并完成课程可获得 10 积分' },
-  { id: 2, event: '连续签到 7 天', points: 50, description: '连续签到满 7 天额外奖励 50 积分' },
-  { id: 3, event: '邀请好友', points: 100, description: '成功邀请一位新会员注册，获得 100 积分' },
-  { id: 4, event: '参加馆内比赛', points: 200, description: '参与道馆组织的比赛可获得 200 积分' },
-  { id: 5, event: '节日福利', points: 50, description: '重要节假日系统自动发放 50 积分' },
-  { id: 6, event: '兑换护具', points: -200, description: '消耗 200 积分兑换一套训练护具' },
-  { id: 7, event: '兑换道服', points: -500, description: '消耗 500 积分兑换一件道服' },
-  { id: 8, event: '课程折扣券', points: -300, description: '消耗 300 积分兑换一张课程九折优惠券' }
+  { id: 1, event: '每日签到', points: 5, description: '每天到馆签到可获得 5 积分' },
+  { id: 2, event: '完成一节课', points: 10, description: '每次按时出席并完成课程可获得 10 积分' },
+  { id: 3, event: '连续签到 7 天', points: 50, description: '连续签到满 7 天额外奖励 50 积分' },
+  { id: 4, event: '连续签到 30 天', points: 300, description: '连续签到满 30 天额外奖励 300 积分并赠送私教课一节' },
+  { id: 5, event: '邀请好友', points: 100, description: '成功邀请一位新会员注册，获得 100 积分' },
+  { id: 6, event: '参加馆内比赛', points: 200, description: '参与道馆组织的搏击赛事可获得 200 积分' },
+  { id: 7, event: '节日福利', points: 50, description: '重要节假日系统自动发放 50 积分' },
+  { id: 8, event: '兑换护具', points: -200, description: '消耗 200 积分兑换一套训练护具' },
+  { id: 9, event: '兑换拳击手套', points: -500, description: '消耗 500 积分兑换一副专业拳击手套' },
+  { id: 10, event: '课程折扣券', points: -300, description: '消耗 300 积分兑换一张课程九折优惠券' }
 ];
+
+// ===== 横幅数据 =====
+var banners = [
+  { id: 1, title: '暑期特训营', subtitle: '7月-8月 专业训练 全面提升', color: '#e63946' },
+  { id: 2, title: '新会员优惠', subtitle: '首月9折 | 首年8折', color: '#1a1a2e' },
+  { id: 3, title: '搏击公开赛', subtitle: '2026年6月 会员专属参赛资格', color: '#f4a261' },
+  { id: 4, title: '教练公开课', subtitle: '每周六 陈志远教练免费体验课', color: '#2d6a4f' }
+];
+
+// ===== 公告数据 =====
+var announcements = [
+  '通知：2026年5月1日劳动节馆内正常营业',
+  '活动：连续签到30天赠送一节私教课',
+  '喜报：我馆学员在省搏击锦标赛获得3金2银',
+  '提醒：请提前15分钟到馆准备，不得迟到'
+];
+
+// ===== 签到记录 =====
+function generateCheckinRecords(userId, consecutiveDays) {
+  var records = [];
+  var today = new Date();
+  var id = userId * 100000;
+  var pointsPerCheckin = 5;
+
+  for (var i = 29; i >= 0; i--) {
+    var d = new Date(today);
+    d.setDate(today.getDate() - i);
+    var dateStr = d.toISOString().split('T')[0];
+    var shouldCheckin = i < consecutiveDays || Math.random() > 0.4;
+    if (shouldCheckin) {
+      records.push({
+        id: id++,
+        date: dateStr,
+        points: pointsPerCheckin,
+        note: '签到打卡 +' + pointsPerCheckin + '积分'
+      });
+    }
+  }
+  return records;
+}
+
+var checkinRecords = {
+  1: generateCheckinRecords(1, 5),
+  2: generateCheckinRecords(2, 2),
+  3: generateCheckinRecords(3, 12),
+  4: generateCheckinRecords(4, 0),
+  5: generateCheckinRecords(5, 21)
+};
 
 module.exports = {
   users: users,
@@ -385,5 +529,8 @@ module.exports = {
   availableBookings: availableBookings,
   userSchedules: userSchedules,
   pointsHistories: pointsHistories,
-  pointsRules: pointsRules
+  pointsRules: pointsRules,
+  banners: banners,
+  announcements: announcements,
+  checkinRecords: checkinRecords
 };

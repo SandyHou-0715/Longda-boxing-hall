@@ -1,16 +1,23 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/login/login",
-    "pages/schedule/schedule",
+    "pages/index/index",
     "pages/booking/booking",
+    "pages/schedule/schedule",
+    "pages/checkin/checkin",
     "pages/points/points",
-    "pages/profile/profile"
+    "pages/coaches/coaches",
+    "pages/coachDetail/coachDetail",
+    "pages/records/records",
+    "pages/profile/profile",
+    "pages/membercard/membercard",
+    "pages/about/about",
+    "pages/settings/settings"
   ],
   "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#c0392b",
-    "backgroundColor": "#1a1a1a",
+    "color": "#888888",
+    "selectedColor": "#e63946",
+    "backgroundColor": "#1a1a2e",
     "borderStyle": "black",
     "list": [
       {
@@ -21,13 +28,13 @@
       },
       {
         "pagePath": "pages/booking/booking",
-        "text": "预约",
+        "text": "约课",
         "iconPath": "images/tabbar/booking.png",
         "selectedIconPath": "images/tabbar/booking-active.png"
       },
       {
-        "pagePath": "pages/schedule/schedule",
-        "text": "课程",
+        "pagePath": "pages/checkin/checkin",
+        "text": "签到",
         "iconPath": "images/tabbar/schedule.png",
         "selectedIconPath": "images/tabbar/schedule-active.png"
       },
@@ -41,8 +48,8 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#1a1a1a",
-    "navigationBarTitleText": "龙达跆拳道馆",
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "navigationBarTitleText": "龙达搏击馆",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f0f0f0"
   },

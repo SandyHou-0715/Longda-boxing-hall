@@ -1,0 +1,59 @@
+<view class="container" wx:if="{{coach}}">
+  <!-- 顶部信息 -->
+  <view class="coach-hero">
+    <view class="hero-avatar">
+      <text class="hero-avatar-text">{{coach.avatar}}</text>
+    </view>
+    <text class="hero-name">{{coach.name}}</text>
+    <text class="hero-specialty">{{coach.specialty}}</text>
+    <view class="hero-stats">
+      <view class="hero-stat">
+        <text class="hero-stat-num">{{coach.rating}}</text>
+        <text class="hero-stat-label">评分 ⭐</text>
+      </view>
+      <view class="hero-stat">
+        <text class="hero-stat-num">{{coach.years}}</text>
+        <text class="hero-stat-label">教龄(年)</text>
+      </view>
+      <view class="hero-stat">
+        <text class="hero-stat-num">{{coach.students}}</text>
+        <text class="hero-stat-label">学员人数</text>
+      </view>
+    </view>
+    <view class="level-badge">
+      <text class="level-text">{{coach.level}}</text>
+    </view>
+  </view>
+
+  <!-- 简介 -->
+  <view class="card">
+    <text class="card-title">教练简介</text>
+    <text class="bio-text">{{coach.bio}}</text>
+  </view>
+
+  <!-- 荣誉 -->
+  <view class="card">
+    <text class="card-title">荣誉资质</text>
+    <view class="honor-item" wx:for="{{coach.honors}}" wx:key="*this">
+      <text class="honor-icon">🏆</text>
+      <text class="honor-text">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 教授课程 -->
+  <view class="card">
+    <text class="card-title">教授课程</text>
+    <view class="courses-list">
+      <view class="course-item" wx:for="{{coach.courses}}" wx:key="*this">
+        <text class="course-icon">👊</text>
+        <text class="course-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>
+
+<view wx:else class="empty-state">
+  <text class="empty-text">教练信息不存在</text>
+</view>

@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- 顶部签到状态 -->
+  <view class="checkin-header">
+    <text class="today-date">{{todayFull}}</text>
+    <view class="streak-row">
+      <text class="streak-label">连续签到</text>
+      <text class="streak-num">{{consecutiveCheckIn}}</text>
+      <text class="streak-unit">天</text>
+    </view>
+  </view>
+
+  <!-- 签到按钮 -->
+  <view class="checkin-btn-wrap">
+    <view class="checkin-btn {{checkedInToday ? 'btn-done' : 'btn-active'}}" bindtap="doCheckin">
+      <text class="checkin-btn-icon">{{checkedInToday ? '✅' : '👊'}}</text>
+      <text class="checkin-btn-text">{{checkedInToday ? '已签到' : '立即签到'}}</text>
+      <text class="checkin-btn-sub">{{checkedInToday ? '今日打卡完成' : '点击打卡 +5积分'}}</text>
+    </view>
+  </view>
+
+  <!-- 本月签到日历 -->
+  <view class="card">
+    <view class="card-title-row">
+      <text class="card-title">{{calendarYear}}年{{calendarMonth}}月签到</text>
+    </view>
+    <view class="week-header">
+      <text class="week-day">日</text>
+      <text class="week-day">一</text>
+      <text class="week-day">二</text>
+      <text class="week-day">三</text>
+      <text class="week-day">四</text>
+      <text class="week-day">五</text>
+      <text class="week-day">六</text>
+    </view>
+    <view class="calendar-grid">
+      <view class="cal-cell {{item.empty ? 'empty' : ''}} {{item.isToday ? 'today' : ''}} {{item.checked ? 'checked' : ''}}"
+        wx:for="{{calendarDays}}" wx:key="index">
+        <text class="cal-date">{{item.empty ? '' : item.date}}</text>
+        <text class="cal-dot" wx:if="{{item.checked && !item.empty}}">●</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 连续签到奖励 -->
+  <view class="card">
+    <view class="card-title-row">
+      <text class="card-title">连续签到奖励</text>
+    </view>
+    <view class="reward-item" wx:for="{{rewards}}" wx:key="days">
+      <view class="reward-left">
+        <view class="reward-days-circle {{consecutiveCheckIn >= item.days ? 'reached' : ''}}">
+          <text class="reward-days-num">{{item.days}}</text>
+          <text class="reward-days-unit">天</text>
+        </view>
+      </view>
+      <view class="reward-right">
+        <text class="reward-desc">{{item.desc}}</text>
+        <view class="reward-progress-bar">
+          <view class="reward-progress-fill" style="width: {{consecutiveCheckIn >= item.days ? 100 : (consecutiveCheckIn / item.days * 100)}}%"></view>
+        </view>
+        <text class="reward-progress-text">{{consecutiveCheckIn >= item.days ? '已达成 🎉' : consecutiveCheckIn + '/' + item.days + ' 天'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>
