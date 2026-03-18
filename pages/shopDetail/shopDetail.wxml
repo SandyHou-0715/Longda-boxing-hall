@@ -1,0 +1,90 @@
+<view class="container" wx:if="{{product}}">
+  <!-- 商品封面 -->
+  <view class="product-banner" style="background:{{product.coverColor}}">
+    <text class="banner-icon">{{product.cover}}</text>
+    <view class="banner-overlay">
+      <text class="category-badge">{{product.category}}</text>
+    </view>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="info-card">
+    <text class="product-name">{{product.name}}</text>
+    <view class="price-row">
+      <text class="price">¥{{product.price}}</text>
+      <text class="original-price">¥{{product.originalPrice}}</text>
+      <view class="discount-badge">
+        <text class="discount-text">省¥{{product.originalPrice - product.price}}</text>
+      </view>
+    </view>
+    <view class="stats-row">
+      <text class="stats-text">销量 {{product.sales}} · 评分 {{product.rating}}/5.0</text>
+      <text class="stats-text">库存 {{product.stock}} 件</text>
+    </view>
+  </view>
+
+  <!-- 商品描述 -->
+  <view class="detail-card">
+    <text class="detail-title">商品详情</text>
+    <text class="detail-desc">{{product.desc}}</text>
+    <view class="feature-list">
+      <view class="feature-item">
+        <text class="feature-icon">✓</text>
+        <text class="feature-text">正品保证 · 7天无理由退换</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">✓</text>
+        <text class="feature-text">全国包邮（满99元）</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">✓</text>
+        <text class="feature-text">会员专属价格</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数量选择 -->
+  <view class="quantity-card">
+    <text class="quantity-label">购买数量</text>
+    <view class="quantity-control">
+      <view class="qty-btn" bindtap="changeQuantity" data-delta="{{-1}}">
+        <text class="qty-icon">−</text>
+      </view>
+      <text class="qty-num">{{quantity}}</text>
+      <view class="qty-btn add" bindtap="changeQuantity" data-delta="{{1}}">
+        <text class="qty-icon">+</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 小计 -->
+  <view class="subtotal-row">
+    <text class="subtotal-label">合计</text>
+    <text class="subtotal-price">¥{{product.price * quantity}}</text>
+  </view>
+
+  <view style="height: 160rpx;"></view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <view class="cart-count-area" bindtap="goToCart">
+      <text class="cart-icon-btn">🛒</text>
+      <view class="cart-badge" wx:if="{{cartCount > 0}}">
+        <text class="badge-num">{{cartCount}}</text>
+      </view>
+    </view>
+    <view class="add-cart-btn" bindtap="addToCart">
+      <text class="add-cart-text">加入购物车</text>
+    </view>
+    <view class="buy-now-btn" bindtap="buyNow">
+      <text class="buy-now-text">立即购买</text>
+    </view>
+  </view>
+</view>
+
+<view class="container" wx:else>
+  <view class="empty-state">
+    <text class="empty-icon">😶</text>
+    <text class="empty-text">商品不存在</text>
+  </view>
+</view>

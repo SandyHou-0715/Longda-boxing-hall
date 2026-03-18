@@ -522,6 +522,390 @@ var checkinRecords = {
   5: generateCheckinRecords(5, 21)
 };
 
+// ===== 校区数据 =====
+var campuses = [
+  {
+    id: 1,
+    name: '龙达搏击（朝阳店）',
+    address: '北京市朝阳区三里屯路19号B1层',
+    hours: '09:00 - 22:00',
+    phone: '010-88889999',
+    cover: '🏟',
+    coverColor: '#ff2d55',
+    tags: ['旗舰店', '最大场馆'],
+    area: 1200
+  },
+  {
+    id: 2,
+    name: '龙达搏击（海淀店）',
+    address: '北京市海淀区中关村南大街5号',
+    hours: '08:00 - 21:30',
+    phone: '010-66667777',
+    cover: '🥊',
+    coverColor: '#007aff',
+    tags: ['高校周边', '专业训练'],
+    area: 800
+  },
+  {
+    id: 3,
+    name: '龙达搏击（丰台店）',
+    address: '北京市丰台区南三环西路60号',
+    hours: '09:00 - 21:00',
+    phone: '010-55556666',
+    cover: '🥋',
+    coverColor: '#5856d6',
+    tags: ['新店优惠', '停车方便'],
+    area: 900
+  },
+  {
+    id: 4,
+    name: '龙达搏击（通州店）',
+    address: '北京市通州区运河东大街与新华大街交叉口',
+    hours: '09:00 - 21:30',
+    phone: '010-44445555',
+    cover: '🏋',
+    coverColor: '#30d158',
+    tags: ['副中心', '家庭友好'],
+    area: 1000
+  }
+];
+
+// ===== 会员卡套餐数据 =====
+var memberCards = {
+  classPack: [
+    {
+      id: 'c10',
+      name: '10次卡',
+      price: 599,
+      times: 10,
+      validity: '6个月内有效',
+      tag: '入门推荐',
+      tagColor: '#30d158',
+      desc: '适合初学者体验，随时约课无时间限制',
+      highlight: '赠2次体验课'
+    },
+    {
+      id: 'c20',
+      name: '20次卡',
+      price: 999,
+      times: 20,
+      validity: '12个月内有效',
+      tag: '热门',
+      tagColor: '#ff2d55',
+      desc: '性价比之选，每次仅需49.95元',
+      highlight: '赠精美护具一套'
+    },
+    {
+      id: 'c30',
+      name: '30次卡',
+      price: 1399,
+      times: 30,
+      validity: '12个月内有效',
+      tag: '超值',
+      tagColor: '#ffd60a',
+      desc: '长期学员优选，每次仅需46.6元',
+      highlight: '赠拳击手套+护具'
+    },
+    {
+      id: 'c50',
+      name: '50次卡',
+      price: 1999,
+      times: 50,
+      validity: '18个月内有效',
+      tag: '最划算',
+      tagColor: '#ff9f0a',
+      desc: '重度训练者专属，每次仅需40元',
+      highlight: '赠全套装备+私教2节'
+    }
+  ],
+  monthly: [
+    {
+      id: 'm1',
+      name: '月卡（基础）',
+      price: 399,
+      unit: '/月',
+      includes: ['不限次数团课', '基础搏击课程', '体能训练'],
+      suitable: '初学者 · 健身爱好者',
+      tag: '入门',
+      tagColor: '#30d158',
+      highlight: '首月立减50元'
+    },
+    {
+      id: 'm2',
+      name: '月卡（进阶）',
+      price: 599,
+      unit: '/月',
+      includes: ['不限次数团课', '所有课程', '每月1节私教', '体测评估'],
+      suitable: '进阶学员 · 系统提升',
+      tag: '推荐',
+      tagColor: '#ff2d55',
+      highlight: '含私教课1节'
+    },
+    {
+      id: 'm3',
+      name: '月卡（无限）',
+      price: 799,
+      unit: '/月',
+      includes: ['不限次数全课程', '每月3节私教', '专属训练计划', '优先预约权'],
+      suitable: '高阶学员 · 竞技备战',
+      tag: '旗舰',
+      tagColor: '#007aff',
+      highlight: '含私教课3节'
+    }
+  ],
+  yearly: [
+    {
+      id: 'y1',
+      name: '年卡（标准）',
+      price: 3999,
+      unit: '/年',
+      includes: ['不限次数团课', '基础搏击课程', '体能训练', '全年无限预约'],
+      benefits: ['赠精美护具一套', '生日双倍积分', '年度颁奖典礼'],
+      tag: '年付优惠',
+      tagColor: '#30d158',
+      monthlyAvg: '333元/月'
+    },
+    {
+      id: 'y2',
+      name: '年卡（尊享）',
+      price: 5999,
+      unit: '/年',
+      includes: ['不限次数全课程', '每月2节私教课', '专属课程计划', '优先约课'],
+      benefits: ['赠全套专业装备', '生日私教课1节', '年度VIP聚会', '专属更衣柜'],
+      tag: '热门',
+      tagColor: '#ff2d55',
+      monthlyAvg: '500元/月'
+    },
+    {
+      id: 'y3',
+      name: '年卡（至尊）',
+      price: 8999,
+      unit: '/年',
+      includes: ['不限次数全课程', '每月5节私教课', '私人训练计划', '优先约课+场地'],
+      benefits: ['赠顶级专业装备', '专属储物柜', '每季度体测报告', '参赛资格+名额', '年度VIP晚宴'],
+      tag: '至尊',
+      tagColor: '#ffd60a',
+      monthlyAvg: '750元/月'
+    }
+  ]
+};
+
+// ===== 商城商品数据 =====
+var shopProducts = [
+  {
+    id: 1,
+    name: '专业拳击手套',
+    price: 199,
+    originalPrice: 259,
+    category: '拳套',
+    sales: 328,
+    rating: 4.8,
+    cover: '🥊',
+    coverColor: '#ff2d55',
+    desc: '牛皮材质，内衬加厚，适合训练和比赛',
+    stock: 50,
+    images: ['🥊']
+  },
+  {
+    id: 2,
+    name: '跆拳道道服',
+    price: 299,
+    originalPrice: 399,
+    category: '道服',
+    sales: 215,
+    rating: 4.7,
+    cover: '🥋',
+    coverColor: '#007aff',
+    desc: '轻薄透气面料，适合日常训练和比赛',
+    stock: 30,
+    images: ['🥋']
+  },
+  {
+    id: 3,
+    name: '头盔护具',
+    price: 159,
+    originalPrice: 199,
+    category: '护具',
+    sales: 180,
+    rating: 4.6,
+    cover: '⛑',
+    coverColor: '#5856d6',
+    desc: '全包裹设计，多重缓冲保护，调节可拆卸',
+    stock: 40,
+    images: ['⛑']
+  },
+  {
+    id: 4,
+    name: '护胫',
+    price: 89,
+    originalPrice: 119,
+    category: '护具',
+    sales: 420,
+    rating: 4.9,
+    cover: '🦵',
+    coverColor: '#30d158',
+    desc: '高弹力材质，双面保护，轻便舒适',
+    stock: 100,
+    images: ['🦵']
+  },
+  {
+    id: 5,
+    name: '沙袋手套',
+    price: 129,
+    originalPrice: 169,
+    category: '拳套',
+    sales: 256,
+    rating: 4.7,
+    cover: '🧤',
+    coverColor: '#ff9f0a',
+    desc: '加厚填充，适合重沙袋训练',
+    stock: 60,
+    images: ['🧤']
+  },
+  {
+    id: 6,
+    name: '跳绳（专业版）',
+    price: 39,
+    originalPrice: 59,
+    category: '训练器材',
+    sales: 680,
+    rating: 4.8,
+    cover: '🪢',
+    coverColor: '#ffd60a',
+    desc: '钢丝绳，带滚轴轴承，速度快不打结',
+    stock: 200,
+    images: ['🪢']
+  },
+  {
+    id: 7,
+    name: '拳击绷带',
+    price: 29,
+    originalPrice: 39,
+    category: '配件',
+    sales: 890,
+    rating: 4.9,
+    cover: '🩹',
+    coverColor: '#ff2d55',
+    desc: '弹力绑带，保护手腕和拳节，4.5米长',
+    stock: 300,
+    images: ['🩹']
+  },
+  {
+    id: 8,
+    name: '护齿套',
+    price: 49,
+    originalPrice: 69,
+    category: '护具',
+    sales: 145,
+    rating: 4.5,
+    cover: '😁',
+    coverColor: '#5856d6',
+    desc: '热塑成型，贴合牙齿，减少冲击伤害',
+    stock: 80,
+    images: ['😁']
+  },
+  {
+    id: 9,
+    name: '训练打靶',
+    price: 169,
+    originalPrice: 229,
+    category: '训练器材',
+    sales: 96,
+    rating: 4.7,
+    cover: '🎯',
+    coverColor: '#007aff',
+    desc: '双层海绵填充，手持靶，适合踢拳训练',
+    stock: 25,
+    images: ['🎯']
+  },
+  {
+    id: 10,
+    name: '搏击短裤',
+    price: 119,
+    originalPrice: 159,
+    category: '道服',
+    sales: 312,
+    rating: 4.8,
+    cover: '🩳',
+    coverColor: '#ff9f0a',
+    desc: '速干弹力材质，侧开叉设计，运动自如',
+    stock: 70,
+    images: ['🩳']
+  },
+  {
+    id: 11,
+    name: '运动水壶',
+    price: 59,
+    originalPrice: 79,
+    category: '配件',
+    sales: 540,
+    rating: 4.6,
+    cover: '🧴',
+    coverColor: '#30d158',
+    desc: '800ml大容量，防漏设计，带刻度线',
+    stock: 150,
+    images: ['🧴']
+  },
+  {
+    id: 12,
+    name: '训练T恤',
+    price: 89,
+    originalPrice: 129,
+    category: '道服',
+    sales: 445,
+    rating: 4.7,
+    cover: '👕',
+    coverColor: '#5856d6',
+    desc: '速干透气面料，龙达搏击馆定制款',
+    stock: 90,
+    images: ['👕']
+  },
+  {
+    id: 13,
+    name: '护手掌',
+    price: 69,
+    originalPrice: 89,
+    category: '护具',
+    sales: 230,
+    rating: 4.6,
+    cover: '🤜',
+    coverColor: '#ffd60a',
+    desc: '开指设计，适合MMA和散打训练',
+    stock: 55,
+    images: ['🤜']
+  },
+  {
+    id: 14,
+    name: '俯卧撑支架',
+    price: 79,
+    originalPrice: 109,
+    category: '训练器材',
+    sales: 187,
+    rating: 4.8,
+    cover: '💪',
+    coverColor: '#ff2d55',
+    desc: '防滑旋转设计，增加训练幅度，保护腕部',
+    stock: 40,
+    images: ['💪']
+  },
+  {
+    id: 15,
+    name: '搏击护腰',
+    price: 139,
+    originalPrice: 179,
+    category: '护具',
+    sales: 88,
+    rating: 4.5,
+    cover: '🛡',
+    coverColor: '#007aff',
+    desc: '宽版硬质护腰，提供核心稳定保护',
+    stock: 35,
+    images: ['🛡']
+  }
+];
+
+var shopCategories = ['全部', '拳套', '护具', '道服', '训练器材', '配件'];
+
 module.exports = {
   users: users,
   coaches: coaches,
@@ -532,5 +916,9 @@ module.exports = {
   pointsRules: pointsRules,
   banners: banners,
   announcements: announcements,
-  checkinRecords: checkinRecords
+  checkinRecords: checkinRecords,
+  campuses: campuses,
+  memberCards: memberCards,
+  shopProducts: shopProducts,
+  shopCategories: shopCategories
 };

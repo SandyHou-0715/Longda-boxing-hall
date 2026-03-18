@@ -4,8 +4,11 @@ var util = require('../../utils/util');
 Page({
   data: {
     courseList: [],
+    filteredList: [],
     remainingClasses: 0,
-    userInfo: null
+    userInfo: null,
+    coaches: [],
+    selectedCoachId: null
   },
 
   onShow: function () {
@@ -22,11 +25,9 @@ Page({
 
     var remaining = userInfo.remainingClasses || 0;
 
-    // 获取用户已预约的课程ID列表（从课程表中找出"待上课"状态的预约课程）
     var scheduleKey = 'schedule_' + userInfo.id;
     var schedule = wx.getStorageSync(scheduleKey) || mock.userSchedules[userInfo.id] || [];
 
-    // 收集已预约的课程（通过bookingId标记）
     var bookedIds = {};
     for (var i = 0; i < schedule.length; i++) {
       if (schedule[i].status === '待上课' && schedule[i].bookingId) {
@@ -34,7 +35,6 @@ Page({
       }
     }
 
-    // 处理可预约课程列表
     var courseList = mock.availableBookings.map(function (item) {
       var seatsLeft = item.maxCapacity - item.currentEnrollment;
       return Object.assign({}, item, {
@@ -46,10 +46,48 @@ Page({
       });
     });
 
+    // 构建教练列表（去重）
+    var coachMap = {};
+    var coaches = [{ id: null, name: '全部', avatar: '全' }];
+    for (var i = 0; i < mock.coaches.length; i++) {
+      var c = mock.coaches[i];
+      if (!coachMap[c.id]) {
+        coachMap[c.id] = true;
+        coaches.push({ id: c.id, name: c.name, avatar: c.avatar });
+      }
+    }
+
+    var selectedCoachId = this.data.selectedCoachId;
+    var filtered = this.filterByCoach(courseList, selectedCoachId);
+
     this.setData({
       courseList: courseList,
-      remainingClasses: remaining
+      filteredList: filtered,
+      remainingClasses: remaining,
+      coaches: coaches
     });
+  },
+
+  filterByCoach: function (list, coachId) {
+    if (coachId === null || coachId === undefined) return list;
+    var coachName = null;
+    for (var i = 0; i < mock.coaches.length; i++) {
+      if (mock.coaches[i].id === coachId) {
+        coachName = mock.coaches[i].name;
+        break;
+      }
+    }
+    if (!coachName) return list;
+    return list.filter(function (item) { return item.coach === coachName; });
+  },
+
+  selectCoach: function (e) {
+    var rawId = e.currentTarget.dataset.id;
+    // dataset converts null to 'null' string; normalize to null for "all" selection
+    var coachId = (rawId === null || rawId === 'null' || rawId === undefined) ? null : Number(rawId);
+    this.setData({ selectedCoachId: coachId });
+    var filtered = this.filterByCoach(this.data.courseList, coachId);
+    this.setData({ filteredList: filtered });
   },
 
   bookCourse: function (e) {
@@ -57,7 +95,6 @@ Page({
     var that = this;
     var userInfo = this.data.userInfo;
 
-    // 找到要预约的课程
     var course = null;
     for (var i = 0; i < mock.availableBookings.length; i++) {
       if (mock.availableBookings[i].id === id) {
@@ -67,7 +104,6 @@ Page({
     }
     if (!course) return;
 
-    // 检查课时
     if ((userInfo.remainingClasses || 0) <= 0) {
       wx.showToast({ title: '课时不足，请续费', icon: 'none' });
       return;
@@ -76,15 +112,13 @@ Page({
     wx.showModal({
       title: '确认预约',
       content: '预约 ' + course.courseName + '\n' + course.date + ' ' + course.time + '\n' + course.location,
-      confirmColor: '#c0392b',
+      confirmColor: '#ff2d55',
       success: function (res) {
         if (res.confirm) {
-          // 扣减课时
           userInfo.usedClasses = (userInfo.usedClasses || 0) + 1;
           userInfo.remainingClasses = Math.max(0, (userInfo.remainingClasses || 0) - 1);
           wx.setStorageSync('userInfo', userInfo);
 
-          // 添加到课程表
           var scheduleKey = 'schedule_' + userInfo.id;
           var schedule = wx.getStorageSync(scheduleKey) || [];
 
@@ -118,10 +152,9 @@ Page({
     wx.showModal({
       title: '取消预约',
       content: '确定要取消这个预约吗？课时将退还。',
-      confirmColor: '#c0392b',
+      confirmColor: '#ff2d55',
       success: function (res) {
         if (res.confirm) {
-          // 从课程表中移除
           var scheduleKey = 'schedule_' + userInfo.id;
           var schedule = wx.getStorageSync(scheduleKey) || [];
 
@@ -132,7 +165,6 @@ Page({
             }
           }
 
-          // 退还课时
           userInfo.usedClasses = Math.max(0, (userInfo.usedClasses || 0) - 1);
           userInfo.remainingClasses = (userInfo.remainingClasses || 0) + 1;
           wx.setStorageSync('userInfo', userInfo);

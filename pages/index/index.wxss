@@ -1,16 +1,17 @@
-/* 首页样式 */
+/* 首页样式 - 暗黑酷炫风 */
 .container {
-  background: #f0f0f0;
+  background: linear-gradient(160deg, #0d0d0d 0%, #1c1c1e 100%);
   min-height: 100vh;
 }
 
 /* 顶部头部区域 */
 .index-header {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(135deg, #0d0d0d 0%, #1c1c1e 100%);
   padding: 40rpx 30rpx 36rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
 }
 
 .header-left {
@@ -23,13 +24,13 @@
 .avatar-circle {
   width: 96rpx;
   height: 96rpx;
-  background: linear-gradient(135deg, #e63946, #c1121f);
+  background: linear-gradient(135deg, #ff2d55, #5856d6);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 3rpx solid rgba(244, 162, 97, 0.6);
+  box-shadow: 0 0 20rpx rgba(255, 45, 85, 0.4);
 }
 
 .avatar-text {
@@ -48,14 +49,33 @@
 
 .member-badge {
   font-size: 22rpx;
-  color: #f4a261;
+  color: #ffd60a;
   display: block;
 }
 
-.today-text {
-  font-size: 22rpx;
-  color: rgba(255, 255, 255, 0.5);
+.header-right {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  border-radius: 30rpx;
+  padding: 8rpx 16rpx;
+  gap: 6rpx;
   flex-shrink: 0;
+  max-width: 220rpx;
+}
+
+.campus-name-text {
+  font-size: 20rpx;
+  color: #8e8e93;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.campus-switch-icon {
+  font-size: 22rpx;
+  color: #8e8e93;
 }
 
 /* 轮播图 */
@@ -78,6 +98,7 @@
   color: #ffffff;
   display: block;
   margin-bottom: 16rpx;
+  text-shadow: 0 2rpx 12rpx rgba(0,0,0,0.4);
 }
 
 .banner-subtitle {
@@ -88,11 +109,11 @@
 
 /* 公告栏 */
 .notice-bar {
-  background: #fff8e1;
+  background: rgba(255, 214, 10, 0.08);
+  border-bottom: 1rpx solid rgba(255, 214, 10, 0.15);
   display: flex;
   align-items: center;
   padding: 18rpx 24rpx;
-  border-bottom: 1rpx solid #ffe082;
 }
 
 .notice-icon {
@@ -107,8 +128,72 @@
 }
 
 .notice-text {
+  font-size: 24rpx;
+  color: #ffd60a;
+}
+
+/* 当前校区卡片 */
+.campus-card {
+  margin: 20rpx 20rpx 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+  padding: 20rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.campus-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  flex: 1;
+  min-width: 0;
+}
+
+.campus-icon-big {
+  font-size: 44rpx;
+  flex-shrink: 0;
+}
+
+.campus-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.campus-card-name {
   font-size: 26rpx;
-  color: #795548;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.campus-card-addr {
+  font-size: 20rpx;
+  color: #8e8e93;
+  display: block;
+  margin-bottom: 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.campus-card-hours {
+  font-size: 20rpx;
+  color: #30d158;
+  display: block;
+}
+
+.campus-switch-btn {
+  font-size: 22rpx;
+  color: #ff2d55;
+  flex-shrink: 0;
+  margin-left: 12rpx;
 }
 
 /* 数据概览 */
@@ -120,46 +205,42 @@
 
 .stat-card {
   flex: 1;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
   border-radius: 16rpx;
   padding: 28rpx 16rpx;
   text-align: center;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
-  border-top: 6rpx solid #1a1a2e;
+  border-top: 4rpx solid #007aff;
 }
 
 .stat-card.gold {
-  border-top-color: #f4a261;
+  border-top-color: #ffd60a;
 }
 
 .stat-card.red {
-  border-top-color: #e63946;
+  border-top-color: #ff2d55;
 }
 
 .stat-number {
   font-size: 44rpx;
   font-weight: bold;
-  color: #1a1a2e;
+  color: #ffffff;
   display: block;
   margin-bottom: 6rpx;
 }
 
 .stat-label {
   font-size: 22rpx;
-  color: #999999;
+  color: #8e8e93;
 }
 
 /* 卡片通用 */
 .card {
-  background: #ffffff;
-  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  border-radius: 20rpx;
   margin: 20rpx 20rpx 0;
   padding: 30rpx;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
-}
-
-.card-title-row {
-  margin-bottom: 24rpx;
 }
 
 .card-header {
@@ -172,74 +253,12 @@
 .card-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #1a1a2e;
+  color: #ffffff;
 }
 
 .card-link {
   font-size: 24rpx;
-  color: #e63946;
-}
-
-/* 快捷入口 - 6 items, 2 rows of 3 */
-.quick-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 24rpx 0;
-}
-
-.nav-item {
-  width: 33.33%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12rpx;
-}
-
-.nav-icon-box {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 24rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.red-bg {
-  background: linear-gradient(135deg, #e63946, #c1121f);
-}
-
-.green-bg {
-  background: linear-gradient(135deg, #2d6a4f, #40916c);
-}
-
-.gold-bg {
-  background: linear-gradient(135deg, #e67e22, #f4a261);
-}
-
-.blue-bg {
-  background: linear-gradient(135deg, #1565c0, #1e88e5);
-}
-
-.purple-bg {
-  background: linear-gradient(135deg, #6a0dad, #9b59b6);
-}
-
-.dark-bg {
-  background: linear-gradient(135deg, #1a1a2e, #16213e);
-}
-
-.gray-bg {
-  background: linear-gradient(135deg, #546e7a, #78909c);
-}
-
-.nav-icon {
-  font-size: 44rpx;
-}
-
-.nav-label {
-  font-size: 24rpx;
-  color: #666666;
+  color: #ff2d55;
 }
 
 /* 近期课程列表 */
@@ -247,7 +266,7 @@
   display: flex;
   align-items: center;
   padding: 20rpx 0;
-  border-bottom: 1rpx solid #f0f0f0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
 }
 
 .schedule-item:last-child {
@@ -263,19 +282,19 @@
 .schedule-date {
   font-size: 26rpx;
   font-weight: bold;
-  color: #1a1a2e;
+  color: #ffffff;
   display: block;
 }
 
 .schedule-day {
   font-size: 20rpx;
-  color: #999999;
+  color: #8e8e93;
 }
 
 .schedule-divider {
   width: 2rpx;
   height: 60rpx;
-  background: #e0e0e0;
+  background: rgba(255, 255, 255, 0.1);
   margin: 0 20rpx;
   flex-shrink: 0;
 }
@@ -287,14 +306,14 @@
 .schedule-course {
   font-size: 28rpx;
   font-weight: bold;
-  color: #1a1a2e;
+  color: #ffffff;
   display: block;
   margin-bottom: 6rpx;
 }
 
 .schedule-meta {
   font-size: 22rpx;
-  color: #999999;
+  color: #8e8e93;
 }
 
 .schedule-status {
@@ -322,11 +341,12 @@
 .coach-avatar-circle {
   width: 88rpx;
   height: 88rpx;
-  background: linear-gradient(135deg, #1a1a2e, #e63946);
+  background: linear-gradient(135deg, #ff2d55, #5856d6);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 15rpx rgba(255, 45, 85, 0.3);
 }
 
 .coach-avatar-text {
@@ -337,7 +357,136 @@
 
 .coach-name-text {
   font-size: 22rpx;
-  color: #555555;
+  color: #8e8e93;
+}
+
+/* 会员卡区域标题 */
+.section-title-row {
+  margin: 30rpx 20rpx 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.section-sub {
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 会员卡模块 */
+.member-card-section {
+  margin: 20rpx 0 0;
+  padding-left: 20rpx;
+}
+
+.member-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 16rpx;
+}
+
+.member-card-type-icon {
+  font-size: 32rpx;
+}
+
+.member-card-type-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* 套餐卡片轮播 */
+.card-swiper {
+  height: 220rpx;
+}
+
+.pack-card {
+  height: 210rpx;
+  background: linear-gradient(135deg, #1c1c1e, #2c2c2e);
+  border: 1rpx solid rgba(255, 45, 85, 0.3);
+  border-radius: 20rpx;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 20rpx;
+  box-shadow: 0 0 15rpx rgba(255, 45, 85, 0.1);
+}
+
+.pack-card.monthly {
+  border-color: rgba(0, 122, 255, 0.3);
+  box-shadow: 0 0 15rpx rgba(0, 122, 255, 0.1);
+}
+
+.pack-card.yearly {
+  border-color: rgba(255, 214, 10, 0.4);
+  box-shadow: 0 0 20rpx rgba(255, 214, 10, 0.15);
+}
+
+.pack-card-top {
+  flex: 1;
+}
+
+.pack-tag {
+  font-size: 18rpx;
+  border: 1rpx solid;
+  border-radius: 8rpx;
+  padding: 2rpx 12rpx;
+  display: inline-block;
+  margin-bottom: 10rpx;
+}
+
+.pack-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.pack-price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10rpx;
+}
+
+.pack-price {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #ff2d55;
+  line-height: 1;
+}
+
+.pack-times {
+  font-size: 24rpx;
+  color: #8e8e93;
+  margin-bottom: 4rpx;
+}
+
+.pack-card-bottom {
+  border-top: 1rpx solid rgba(255, 255, 255, 0.08);
+  padding-top: 12rpx;
+}
+
+.pack-validity {
+  font-size: 20rpx;
+  color: #8e8e93;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.pack-highlight {
+  font-size: 20rpx;
+  color: #ffd60a;
+  display: block;
 }
 
 /* 空状态 */
@@ -355,7 +504,7 @@
 
 .empty-text {
   font-size: 26rpx;
-  color: #999999;
+  color: #8e8e93;
 }
 
 /* 标签 */
@@ -366,16 +515,16 @@
 }
 
 .tag-pending {
-  background: #e3f2fd;
-  color: #1565c0;
+  background: rgba(0, 122, 255, 0.15);
+  color: #007aff;
 }
 
 .tag-completed {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: rgba(48, 209, 88, 0.15);
+  color: #30d158;
 }
 
 .tag-cancelled {
-  background: #f5f5f5;
-  color: #757575;
+  background: rgba(142, 142, 147, 0.15);
+  color: #8e8e93;
 }

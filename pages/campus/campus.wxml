@@ -1,0 +1,59 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="page-header">
+    <view class="header-icon">🏟</view>
+    <text class="header-title">选择校区</text>
+    <text class="header-sub">选择您常去的训练校区</text>
+  </view>
+
+  <!-- 校区卡片列表 -->
+  <view class="campus-list">
+    <view
+      class="campus-card {{item.id === selectedId ? 'selected' : ''}}"
+      wx:for="{{campuses}}"
+      wx:key="id"
+      bindtap="selectCampus"
+      data-id="{{item.id}}"
+    >
+      <!-- 卡片左侧图标 -->
+      <view class="campus-cover" style="background:{{item.coverColor}}">
+        <text class="campus-cover-icon">{{item.cover}}</text>
+      </view>
+
+      <!-- 卡片信息 -->
+      <view class="campus-info">
+        <view class="campus-name-row">
+          <text class="campus-name">{{item.name}}</text>
+          <view class="campus-tags">
+            <text class="campus-tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+          </view>
+        </view>
+        <view class="campus-detail-row">
+          <text class="campus-detail-icon">📍</text>
+          <text class="campus-detail-text">{{item.address}}</text>
+        </view>
+        <view class="campus-detail-row">
+          <text class="campus-detail-icon">🕐</text>
+          <text class="campus-detail-text">{{item.hours}}</text>
+        </view>
+        <view class="campus-detail-row">
+          <text class="campus-detail-icon">📐</text>
+          <text class="campus-detail-text">训练面积 {{item.area}} ㎡</text>
+        </view>
+      </view>
+
+      <!-- 选中标志 -->
+      <view class="check-mark {{item.id === selectedId ? 'active' : ''}}">
+        <text class="check-icon">✓</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <view class="confirm-btn {{selectedId ? 'active' : ''}}" bindtap="confirmSelect">
+      <text class="confirm-text">进入校区</text>
+    </view>
+    <text class="skip-text" bindtap="skipSelect">暂不选择，进入默认校区</text>
+  </view>
+</view>

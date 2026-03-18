@@ -5,6 +5,7 @@ var util = require('../../utils/util');
 Page({
   data: {
     userInfo: null,
+    currentCampus: null,
     todayStr: '',
     remainingClasses: 0,
     consecutiveCheckIn: 0,
@@ -12,7 +13,8 @@ Page({
     banners: [],
     announcements: [],
     currentAnnouncement: '',
-    coachPreview: []
+    coachPreview: [],
+    memberCards: null
   },
 
   _announcementTimer: null,
@@ -49,6 +51,7 @@ Page({
     var userInfo = wx.getStorageSync('userInfo');
     if (!userInfo) return;
 
+    var currentCampus = wx.getStorageSync('currentCampus') || mock.campuses[0];
     var remaining = userInfo.remainingClasses || 0;
     var consecutiveCheckIn = userInfo.consecutiveCheckIn || 0;
 
@@ -98,6 +101,7 @@ Page({
 
     this.setData({
       userInfo: userInfo,
+      currentCampus: currentCampus,
       todayStr: todayDisplay,
       remainingClasses: remaining,
       consecutiveCheckIn: consecutiveCheckIn,
@@ -105,7 +109,8 @@ Page({
       banners: mock.banners || [],
       announcements: announcements,
       currentAnnouncement: announcements.length > 0 ? announcements[0] : '',
-      coachPreview: (mock.coaches || []).slice(0, 5)
+      coachPreview: (mock.coaches || []).slice(0, 5),
+      memberCards: mock.memberCards || null
     });
   },
 
@@ -122,7 +127,7 @@ Page({
   },
 
   goToCheckin: function () {
-    wx.switchTab({ url: '/pages/checkin/checkin' });
+    wx.navigateTo({ url: '/pages/checkin/checkin' });
   },
 
   goToCoaches: function () {
@@ -139,6 +144,16 @@ Page({
 
   goToProfile: function () {
     wx.switchTab({ url: '/pages/profile/profile' });
+  },
+
+  goToCardDetail: function (e) {
+    var type = e.currentTarget.dataset.type;
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({ url: '/pages/cardDetail/cardDetail?type=' + type + '&id=' + id });
+  },
+
+  switchCampus: function () {
+    wx.navigateTo({ url: '/pages/campus/campus' });
   }
 });
 

@@ -1,0 +1,84 @@
+<view class="container" wx:if="{{card}}">
+  <!-- 顶部卡片展示 -->
+  <view class="card-banner">
+    <view class="banner-badge">{{typeName}}</view>
+    <text class="card-name">{{card.name}}</text>
+    <view class="price-display">
+      <text class="price-num">¥{{card.price}}</text>
+      <text class="price-unit" wx:if="{{card.unit}}">{{card.unit}}</text>
+    </view>
+    <text class="highlight-text" wx:if="{{card.highlight}}">🎁 {{card.highlight}}</text>
+    <text class="monthly-avg" wx:if="{{card.monthlyAvg}}">折算约 {{card.monthlyAvg}}</text>
+  </view>
+
+  <!-- 次卡详情 -->
+  <view class="detail-card" wx:if="{{cardType === 'classPack'}}">
+    <text class="section-title">套餐内容</text>
+    <view class="detail-row">
+      <text class="detail-label">包含次数</text>
+      <text class="detail-value accent">{{card.times}} 次</text>
+    </view>
+    <view class="detail-row">
+      <text class="detail-label">有效期</text>
+      <text class="detail-value">{{card.validity}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="detail-label">均价</text>
+      <text class="detail-value accent">¥{{card.perClassPrice}} / 次</text>
+    </view>
+    <text class="desc-text">{{card.desc}}</text>
+  </view>
+
+  <!-- 月卡/年卡包含内容 -->
+  <view class="detail-card" wx:if="{{cardType !== 'classPack'}}">
+    <text class="section-title">包含内容</text>
+    <view class="include-item" wx:for="{{card.includes}}" wx:key="*this">
+      <text class="include-icon">✓</text>
+      <text class="include-text">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 年卡赠送福利 -->
+  <view class="detail-card" wx:if="{{cardType === 'yearly' && card.benefits && card.benefits.length > 0}}">
+    <text class="section-title">尊享福利</text>
+    <view class="benefit-item" wx:for="{{card.benefits}}" wx:key="*this">
+      <text class="benefit-icon">🎁</text>
+      <text class="benefit-text">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 月卡适用课程 -->
+  <view class="detail-card" wx:if="{{cardType === 'monthly' && card.suitable}}">
+    <text class="section-title">适合人群</text>
+    <text class="suitable-text">{{card.suitable}}</text>
+  </view>
+
+  <!-- 通用说明 -->
+  <view class="detail-card">
+    <text class="section-title">购买须知</text>
+    <text class="notice-text">1. 本套餐在龙达搏击馆所有校区通用</text>
+    <text class="notice-text">2. 购买后立即生效，请妥善使用</text>
+    <text class="notice-text">3. 课时不可退换，请按需购买</text>
+    <text class="notice-text">4. 如有疑问请联系前台客服</text>
+  </view>
+
+  <view style="height: 160rpx;"></view>
+
+  <!-- 底部购买按钮 -->
+  <view class="bottom-bar">
+    <view class="total-area">
+      <text class="total-label">总价</text>
+      <text class="total-price">¥{{card.price}}</text>
+    </view>
+    <view class="buy-btn" bindtap="buyCard">
+      <text class="buy-text">立即购买</text>
+    </view>
+  </view>
+</view>
+
+<view class="container" wx:else>
+  <view class="empty-state">
+    <text class="empty-icon">💳</text>
+    <text class="empty-text">套餐不存在</text>
+  </view>
+</view>

@@ -11,7 +11,12 @@ Page({
     // 已登录则直接跳转首页
     var userInfo = wx.getStorageSync('userInfo');
     if (userInfo) {
-      wx.switchTab({ url: '/pages/index/index' });
+      var campus = wx.getStorageSync('currentCampus');
+      if (campus) {
+        wx.switchTab({ url: '/pages/index/index' });
+      } else {
+        wx.navigateTo({ url: '/pages/campus/campus' });
+      }
     }
   },
 
@@ -69,7 +74,7 @@ Page({
         wx.showToast({ title: '登录成功', icon: 'success', duration: 1000 });
 
         setTimeout(function () {
-          wx.switchTab({ url: '/pages/index/index' });
+          wx.navigateTo({ url: '/pages/campus/campus' });
         }, 1000);
       } else {
         wx.showToast({ title: '手机号或密码错误', icon: 'none', duration: 2000 });
