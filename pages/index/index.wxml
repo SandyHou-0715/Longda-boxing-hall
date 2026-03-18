@@ -10,7 +10,10 @@
         <text class="member-badge">{{userInfo.memberLevel}} · {{userInfo.belt}}</text>
       </view>
     </view>
-    <text class="today-text">{{todayStr}}</text>
+    <view class="header-right" bindtap="switchCampus">
+      <text class="campus-name-text">{{currentCampus.name}}</text>
+      <text class="campus-switch-icon">⌄</text>
+    </view>
   </view>
 
   <!-- 轮播图 -->
@@ -31,6 +34,19 @@
     </scroll-view>
   </view>
 
+  <!-- 当前校区信息 -->
+  <view class="campus-card" bindtap="switchCampus">
+    <view class="campus-card-left">
+      <text class="campus-icon-big">🏟</text>
+      <view class="campus-card-info">
+        <text class="campus-card-name">{{currentCampus.name}}</text>
+        <text class="campus-card-addr">{{currentCampus.address}}</text>
+        <text class="campus-card-hours">营业时间：{{currentCampus.hours}}</text>
+      </view>
+    </view>
+    <text class="campus-switch-btn">切换 ›</text>
+  </view>
+
   <!-- 数据概览 -->
   <view class="stats-row">
     <view class="stat-card" bindtap="goToSchedule">
@@ -44,39 +60,6 @@
     <view class="stat-card red" bindtap="goToCheckin">
       <text class="stat-number">{{consecutiveCheckIn}}</text>
       <text class="stat-label">连续签到</text>
-    </view>
-  </view>
-
-  <!-- 快捷入口 -->
-  <view class="card">
-    <view class="card-title-row">
-      <text class="card-title">快捷功能</text>
-    </view>
-    <view class="quick-nav">
-      <view class="nav-item" bindtap="goToBooking">
-        <view class="nav-icon-box red-bg"><text class="nav-icon">📋</text></view>
-        <text class="nav-label">约课</text>
-      </view>
-      <view class="nav-item" bindtap="goToCheckin">
-        <view class="nav-icon-box green-bg"><text class="nav-icon">✅</text></view>
-        <text class="nav-label">签到</text>
-      </view>
-      <view class="nav-item" bindtap="goToPoints">
-        <view class="nav-icon-box gold-bg"><text class="nav-icon">⭐</text></view>
-        <text class="nav-label">积分</text>
-      </view>
-      <view class="nav-item" bindtap="goToCoaches">
-        <view class="nav-icon-box blue-bg"><text class="nav-icon">👊</text></view>
-        <text class="nav-label">教练</text>
-      </view>
-      <view class="nav-item" bindtap="goToRecords">
-        <view class="nav-icon-box purple-bg"><text class="nav-icon">📚</text></view>
-        <text class="nav-label">记录</text>
-      </view>
-      <view class="nav-item" bindtap="goToMemberCard">
-        <view class="nav-icon-box dark-bg"><text class="nav-icon">💳</text></view>
-        <text class="nav-label">会员卡</text>
-      </view>
     </view>
   </view>
 
@@ -108,7 +91,7 @@
     </view>
   </view>
 
-  <!-- 教练团队入口 -->
+  <!-- 教练团队 -->
   <view class="card" bindtap="goToCoaches">
     <view class="card-header">
       <text class="card-title">教练团队</text>
@@ -120,6 +103,90 @@
         <text class="coach-name-text">{{item.name}}</text>
       </view>
     </view>
+  </view>
+
+  <!-- 会员卡购买模块 -->
+  <view class="section-title-row">
+    <text class="section-title">会员卡套餐</text>
+    <text class="section-sub">选择适合你的训练计划</text>
+  </view>
+
+  <!-- 次卡套餐 -->
+  <view class="member-card-section">
+    <view class="member-card-header">
+      <text class="member-card-type-icon">🎫</text>
+      <text class="member-card-type-name">次卡套餐</text>
+    </view>
+    <swiper class="card-swiper" display-multiple-items="{{1}}" next-margin="60rpx">
+      <swiper-item wx:for="{{memberCards.classPack}}" wx:key="id">
+        <view class="pack-card" bindtap="goToCardDetail" data-type="classPack" data-id="{{item.id}}">
+          <view class="pack-card-top">
+            <text class="pack-tag" style="color:{{item.tagColor}}; border-color:{{item.tagColor}}">{{item.tag}}</text>
+            <text class="pack-name">{{item.name}}</text>
+            <view class="pack-price-row">
+              <text class="pack-price">¥{{item.price}}</text>
+              <text class="pack-times">{{item.times}}次</text>
+            </view>
+          </view>
+          <view class="pack-card-bottom">
+            <text class="pack-validity">{{item.validity}}</text>
+            <text class="pack-highlight">🎁 {{item.highlight}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 月卡套餐 -->
+  <view class="member-card-section">
+    <view class="member-card-header">
+      <text class="member-card-type-icon">📅</text>
+      <text class="member-card-type-name">月卡套餐</text>
+    </view>
+    <swiper class="card-swiper" display-multiple-items="{{1}}" next-margin="60rpx">
+      <swiper-item wx:for="{{memberCards.monthly}}" wx:key="id">
+        <view class="pack-card monthly" bindtap="goToCardDetail" data-type="monthly" data-id="{{item.id}}">
+          <view class="pack-card-top">
+            <text class="pack-tag" style="color:{{item.tagColor}}; border-color:{{item.tagColor}}">{{item.tag}}</text>
+            <text class="pack-name">{{item.name}}</text>
+            <view class="pack-price-row">
+              <text class="pack-price">¥{{item.price}}</text>
+              <text class="pack-times">{{item.unit}}</text>
+            </view>
+          </view>
+          <view class="pack-card-bottom">
+            <text class="pack-validity">{{item.suitable}}</text>
+            <text class="pack-highlight">🎁 {{item.highlight}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 年卡套餐 -->
+  <view class="member-card-section">
+    <view class="member-card-header">
+      <text class="member-card-type-icon">👑</text>
+      <text class="member-card-type-name">年卡套餐</text>
+    </view>
+    <swiper class="card-swiper" display-multiple-items="{{1}}" next-margin="60rpx">
+      <swiper-item wx:for="{{memberCards.yearly}}" wx:key="id">
+        <view class="pack-card yearly" bindtap="goToCardDetail" data-type="yearly" data-id="{{item.id}}">
+          <view class="pack-card-top">
+            <text class="pack-tag" style="color:{{item.tagColor}}; border-color:{{item.tagColor}}">{{item.tag}}</text>
+            <text class="pack-name">{{item.name}}</text>
+            <view class="pack-price-row">
+              <text class="pack-price">¥{{item.price}}</text>
+              <text class="pack-times">{{item.unit}}</text>
+            </view>
+          </view>
+          <view class="pack-card-bottom">
+            <text class="pack-validity">折算 {{item.monthlyAvg}}</text>
+            <text class="pack-highlight" wx:if="{{item.benefits && item.benefits.length > 0}}">🎁 {{item.benefits[0]}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 
   <view style="height: 40rpx;"></view>

@@ -1,0 +1,55 @@
+<view class="container">
+  <!-- 标题栏 -->
+  <view class="top-bar">
+    <text class="page-title">购物车</text>
+    <text class="clear-btn" bindtap="clearCart" wx:if="{{cartItems.length > 0}}">清空</text>
+  </view>
+
+  <!-- 购物车列表 -->
+  <view wx:if="{{cartItems.length > 0}}">
+    <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+      <view class="item-cover" style="background:{{item.coverColor}}">
+        <text class="item-cover-icon">{{item.cover}}</text>
+      </view>
+      <view class="item-info">
+        <text class="item-name">{{item.name}}</text>
+        <text class="item-price">¥{{item.price}}</text>
+      </view>
+      <view class="item-actions">
+        <view class="qty-ctrl">
+          <view class="qty-btn" catchtap="changeQuantity" data-id="{{item.id}}" data-delta="{{-1}}">
+            <text class="qty-icon">−</text>
+          </view>
+          <text class="qty-num">{{item.quantity}}</text>
+          <view class="qty-btn add" catchtap="changeQuantity" data-id="{{item.id}}" data-delta="{{1}}">
+            <text class="qty-icon">+</text>
+          </view>
+        </view>
+        <text class="item-subtotal">¥{{item.price * item.quantity}}</text>
+        <view class="remove-btn" catchtap="removeItem" data-id="{{item.id}}">
+          <text class="remove-icon">🗑</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">🛒</text>
+    <text class="empty-text">购物车是空的</text>
+    <text class="empty-sub">快去商城挑选你喜欢的装备吧～</text>
+  </view>
+
+  <!-- 底部结算 -->
+  <view class="checkout-bar" wx:if="{{cartItems.length > 0}}">
+    <view class="total-area">
+      <text class="total-label">合计：</text>
+      <text class="total-price">¥{{total}}</text>
+    </view>
+    <view class="checkout-btn" bindtap="checkout">
+      <text class="checkout-text">去结算 ({{cartItems.length}})</text>
+    </view>
+  </view>
+
+  <view style="height: {{cartItems.length > 0 ? 140 : 40}}rpx;"></view>
+</view>

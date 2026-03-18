@@ -1,0 +1,193 @@
+/* 校区选择页样式 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #0d0d0d 0%, #1c1c1e 100%);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 200rpx;
+}
+
+/* 顶部标题 */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 30rpx 40rpx;
+}
+
+.header-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.header-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 12rpx;
+}
+
+.header-sub {
+  font-size: 26rpx;
+  color: #8e8e93;
+}
+
+/* 校区列表 */
+.campus-list {
+  padding: 0 24rpx;
+}
+
+/* 校区卡片 */
+.campus-card {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.campus-card.selected {
+  background: rgba(255, 45, 85, 0.12);
+  border-color: #ff2d55;
+  box-shadow: 0 0 20rpx rgba(255, 45, 85, 0.25);
+}
+
+/* 封面图标 */
+.campus-cover {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.campus-cover-icon {
+  font-size: 48rpx;
+}
+
+/* 校区信息 */
+.campus-info {
+  flex: 1;
+}
+
+.campus-name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12rpx;
+  gap: 10rpx;
+}
+
+.campus-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.campus-tags {
+  display: flex;
+  gap: 8rpx;
+}
+
+.campus-tag {
+  font-size: 18rpx;
+  color: #ff2d55;
+  background: rgba(255, 45, 85, 0.15);
+  border: 1rpx solid rgba(255, 45, 85, 0.3);
+  border-radius: 8rpx;
+  padding: 2rpx 10rpx;
+}
+
+.campus-detail-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8rpx;
+  gap: 8rpx;
+}
+
+.campus-detail-icon {
+  font-size: 22rpx;
+  flex-shrink: 0;
+  margin-top: 2rpx;
+}
+
+.campus-detail-text {
+  font-size: 22rpx;
+  color: #8e8e93;
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* 选中标志 */
+.check-mark {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 12rpx;
+  margin-top: 4rpx;
+}
+
+.check-mark.active {
+  background: #ff2d55;
+  border-color: #ff2d55;
+}
+
+.check-icon {
+  font-size: 26rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* 底部按钮栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24rpx 30rpx 50rpx;
+  background: linear-gradient(to top, rgba(13,13,13,0.98) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.confirm-btn {
+  width: 100%;
+  height: 96rpx;
+  background: rgba(142, 142, 147, 0.2);
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.confirm-btn.active {
+  background: linear-gradient(90deg, #ff2d55, #5856d6);
+  box-shadow: 0 8rpx 30rpx rgba(255, 45, 85, 0.4);
+}
+
+.confirm-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 4rpx;
+}
+
+.skip-text {
+  font-size: 24rpx;
+  color: #8e8e93;
+}

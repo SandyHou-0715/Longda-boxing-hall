@@ -1,13 +1,11 @@
-/* 全局样式 - 龙达跆拳道馆 */
-/* 颜色变量 */
-/* --primary: #c0392b (红色) */
-/* --accent: #f39c12 (金色) */
-/* --dark: #1a1a1a (黑色) */
+/* 全局样式 - 龙达搏击馆 暗黑酷炫风 */
+/* 主色: #ff2d55 (亮红) | #007aff (电光蓝) | #0d0d0d (深黑) */
+/* 辅色: #5856d6 (渐变紫) | #30d158 (霓虹绿) | #ffd60a (金色) */
 
 page {
-  background-color: #f0f0f0;
+  background-color: #0d0d0d;
   font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-  color: #333333;
+  color: #ffffff;
   font-size: 28rpx;
   line-height: 1.6;
 }
@@ -18,18 +16,18 @@ page {
   box-sizing: border-box;
 }
 
-/* 卡片样式 */
+/* 毛玻璃卡片 */
 .card {
-  background: #ffffff;
-  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
   margin: 20rpx 30rpx;
   padding: 30rpx;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
 }
 
-/* 主色按钮 */
+/* 渐变色按钮 */
 .btn-primary {
-  background: #c0392b;
+  background: linear-gradient(90deg, #ff2d55, #5856d6);
   color: #ffffff;
   border-radius: 50rpx;
   font-size: 30rpx;
@@ -38,6 +36,7 @@ page {
   padding: 0;
   height: 88rpx;
   line-height: 88rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 45, 85, 0.4);
 }
 
 .btn-primary::after {
@@ -47,8 +46,8 @@ page {
 /* 次要按钮 */
 .btn-secondary {
   background: transparent;
-  color: #c0392b;
-  border: 2rpx solid #c0392b;
+  color: #ff2d55;
+  border: 2rpx solid rgba(255, 45, 85, 0.5);
   border-radius: 50rpx;
   font-size: 28rpx;
   padding: 0;
@@ -64,14 +63,14 @@ page {
 .page-title {
   font-size: 36rpx;
   font-weight: bold;
-  color: #1a1a1a;
+  color: #ffffff;
   padding: 30rpx;
 }
 
 /* 分割线 */
 .divider {
   height: 1rpx;
-  background: #e8e8e8;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
   margin: 20rpx 0;
 }
 
@@ -82,7 +81,7 @@ page {
   align-items: center;
   justify-content: center;
   padding: 100rpx 30rpx;
-  color: #999999;
+  color: #8e8e93;
 }
 
 .empty-icon {
@@ -92,7 +91,7 @@ page {
 
 .empty-text {
   font-size: 28rpx;
-  color: #999999;
+  color: #8e8e93;
 }
 
 /* 标签 */
@@ -104,38 +103,38 @@ page {
 }
 
 .tag-beginner {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: rgba(48, 209, 88, 0.15);
+  color: #30d158;
 }
 
 .tag-intermediate {
-  background: #fff8e1;
-  color: #f57f17;
+  background: rgba(255, 159, 10, 0.15);
+  color: #ff9f0a;
 }
 
 .tag-advanced {
-  background: #fce4ec;
-  color: #c62828;
+  background: rgba(255, 45, 85, 0.15);
+  color: #ff2d55;
 }
 
 .tag-pending {
-  background: #e3f2fd;
-  color: #1565c0;
+  background: rgba(0, 122, 255, 0.15);
+  color: #007aff;
 }
 
 .tag-completed {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: rgba(48, 209, 88, 0.15);
+  color: #30d158;
 }
 
 .tag-cancelled {
-  background: #f5f5f5;
-  color: #757575;
+  background: rgba(142, 142, 147, 0.15);
+  color: #8e8e93;
 }
 
 /* 进度条 */
 .progress-bar-track {
-  background: #e0e0e0;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 8rpx;
   height: 16rpx;
   overflow: hidden;
@@ -144,6 +143,6 @@ page {
 .progress-bar-fill {
   height: 100%;
   border-radius: 8rpx;
-  background: linear-gradient(90deg, #c0392b, #f39c12);
+  background: linear-gradient(90deg, #ff2d55, #5856d6);
   transition: width 0.3s ease;
 }

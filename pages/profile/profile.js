@@ -58,7 +58,11 @@ Page({
   },
 
   goToCheckin: function () {
-    wx.switchTab({ url: '/pages/checkin/checkin' });
+    wx.navigateTo({ url: '/pages/checkin/checkin' });
+  },
+
+  goToCampus: function () {
+    wx.navigateTo({ url: '/pages/campus/campus' });
   },
 
   goToRecords: function () {

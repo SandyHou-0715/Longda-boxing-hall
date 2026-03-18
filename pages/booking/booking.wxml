@@ -11,12 +11,31 @@
     <text class="remaining-text">剩余课时：<text class="remaining-num">{{remainingClasses}}</text> 节</text>
   </view>
 
+  <!-- 教练筛选 -->
+  <view class="coach-filter">
+    <text class="filter-label">教练筛选</text>
+    <scroll-view class="coach-scroll" scroll-x="{{true}}">
+      <view
+        class="coach-filter-item {{(!selectedCoachId && item.id === null) || selectedCoachId === item.id ? 'active' : ''}}"
+        wx:for="{{coaches}}"
+        wx:key="name"
+        bindtap="selectCoach"
+        data-id="{{item.id}}"
+      >
+        <view class="coach-filter-avatar {{(!selectedCoachId && item.id === null) || selectedCoachId === item.id ? 'avatar-active' : ''}}">
+          <text class="coach-filter-avatar-text">{{item.avatar}}</text>
+        </view>
+        <text class="coach-filter-name">{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
   <!-- 课程列表 -->
   <view class="list-container">
-    <block wx:if="{{courseList.length > 0}}">
+    <block wx:if="{{filteredList.length > 0}}">
       <view
         class="course-card {{item.booked ? 'booked' : ''}}"
-        wx:for="{{courseList}}"
+        wx:for="{{filteredList}}"
         wx:key="id"
       >
         <!-- 课程头部 -->
@@ -54,16 +73,10 @@
           <view wx:if="{{item.booked}}" class="cancel-book-btn" catchtap="cancelBooking" data-id="{{item.id}}">
             <text>取消预约</text>
           </view>
-          <view
-            wx:elif="{{item.seatsLeft <= 0}}"
-            class="full-btn"
-          >
+          <view wx:elif="{{item.seatsLeft <= 0}}" class="full-btn">
             <text>名额已满</text>
           </view>
-          <view
-            wx:elif="{{remainingClasses <= 0}}"
-            class="no-class-btn"
-          >
+          <view wx:elif="{{remainingClasses <= 0}}" class="no-class-btn">
             <text>课时不足</text>
           </view>
           <view wx:else class="book-btn" catchtap="bookCourse" data-id="{{item.id}}">
@@ -75,7 +88,7 @@
 
     <view wx:else class="empty-state">
       <text class="empty-icon">📋</text>
-      <text class="empty-text">暂无可预约的课程</text>
+      <text class="empty-text">{{selectedCoachId ? '该教练暂无可预约课程' : '暂无可预约的课程'}}</text>
     </view>
   </view>
 

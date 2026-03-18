@@ -1,7 +1,292 @@
-/* 预约课程页样式 */
+/* 预约课程页样式 - 暗黑酷炫风 */
 .container {
-  background: #f0f0f0;
+  background: linear-gradient(160deg, #0d0d0d 0%, #1c1c1e 100%);
   min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-header {
+  background: linear-gradient(135deg, #0d0d0d, #1c1c1e);
+  padding: 30rpx 30rpx 40rpx;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.page-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.header-sub {
+  font-size: 24rpx;
+  color: #8e8e93;
+}
+
+/* 剩余课时提示条 */
+.remaining-bar {
+  background: linear-gradient(90deg, rgba(255, 45, 85, 0.15), rgba(88, 86, 214, 0.15));
+  border-bottom: 1rpx solid rgba(255, 45, 85, 0.2);
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.remaining-icon {
+  font-size: 32rpx;
+}
+
+.remaining-text {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.remaining-num {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ff2d55;
+}
+
+/* 教练筛选 */
+.coach-filter {
+  padding: 20rpx 24rpx 16rpx;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.filter-label {
+  font-size: 22rpx;
+  color: #8e8e93;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.coach-scroll {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.coach-filter-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  margin-right: 24rpx;
+}
+
+.coach-filter-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2rpx solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.coach-filter-avatar.avatar-active {
+  background: linear-gradient(135deg, #ff2d55, #5856d6);
+  border-color: #ff2d55;
+  box-shadow: 0 0 16rpx rgba(255, 45, 85, 0.5);
+}
+
+.coach-filter-avatar-text {
+  font-size: 28rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.coach-filter-name {
+  font-size: 20rpx;
+  color: #8e8e93;
+}
+
+.coach-filter-item.active .coach-filter-name {
+  color: #ff2d55;
+}
+
+/* 列表容器 */
+.list-container {
+  padding: 20rpx;
+}
+
+/* 课程卡片 */
+.course-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  border-left: 4rpx solid #ff2d55;
+}
+
+.course-card.booked {
+  border-left-color: #30d158;
+}
+
+/* 课程头部 */
+.course-header {
+  padding: 24rpx 24rpx 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.course-name-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  flex: 1;
+}
+
+.course-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* 已预约标记 */
+.booked-badge {
+  background: rgba(48, 209, 88, 0.15);
+  border: 1rpx solid rgba(48, 209, 88, 0.3);
+  border-radius: 20rpx;
+  padding: 4rpx 16rpx;
+  flex-shrink: 0;
+}
+
+.booked-text {
+  font-size: 22rpx;
+  color: #30d158;
+  font-weight: bold;
+}
+
+/* 课程详情 */
+.course-details {
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.03);
+  margin: 16rpx 0 0;
+}
+
+.detail-row {
+  display: flex;
+  gap: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-item {
+  font-size: 24rpx;
+  color: #8e8e93;
+  flex: 1;
+}
+
+.seats-info {
+  color: #8e8e93;
+}
+
+.seats-low {
+  color: #ff2d55;
+  font-weight: bold;
+}
+
+/* 课程描述 */
+.course-desc {
+  font-size: 24rpx;
+  color: #8e8e93;
+  padding: 16rpx 24rpx;
+  line-height: 1.6;
+  display: block;
+}
+
+/* 操作按钮区域 */
+.action-row {
+  padding: 0 24rpx 24rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.book-btn {
+  background: linear-gradient(90deg, #ff2d55, #5856d6);
+  color: #ffffff;
+  padding: 16rpx 48rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 16rpx rgba(255, 45, 85, 0.4);
+}
+
+.cancel-book-btn {
+  background: transparent;
+  color: #8e8e93;
+  padding: 14rpx 48rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.15);
+}
+
+.full-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: #8e8e93;
+  padding: 16rpx 48rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+}
+
+.no-class-btn {
+  background: rgba(255, 214, 10, 0.1);
+  color: #ffd60a;
+  padding: 16rpx 48rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  border: 1rpx solid rgba(255, 214, 10, 0.3);
+}
+
+/* 难度标签 */
+.tag {
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+}
+
+.tag-beginner {
+  background: rgba(48, 209, 88, 0.15);
+  color: #30d158;
+}
+
+.tag-intermediate {
+  background: rgba(255, 159, 10, 0.15);
+  color: #ff9f0a;
+}
+
+.tag-advanced {
+  background: rgba(255, 45, 85, 0.15);
+  color: #ff2d55;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 30rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #8e8e93;
 }
 
 /* 页面标题 */
